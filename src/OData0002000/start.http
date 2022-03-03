@@ -1,0 +1,12 @@
+### In Startup.cs, ensure the following configured.
+### services.AddOData(options => 
+###    options.Select().Filter().OrderBy().Expand());
+
+### odata
+GET https://localhost:5001/odata
+Accept: application/json
+
+### odata metadata
+GET https://localhost:5001/ODATA/$metadata
+Accept: application/json
+
