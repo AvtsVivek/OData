@@ -7,6 +7,21 @@ GET https://localhost:5001/odata
 Accept: application/json
 
 ### odata metadata
-GET https://localhost:5001/ODATA/$metadata
+GET https://localhost:5001/odata/$metadata
 Accept: application/json
 
+### odata people
+GET https://localhost:5001/odata/people
+Accept: application/json
+
+### odata people
+GET https://localhost:5001/odata/$metadata#People
+Accept: application/json
+
+### odata/vinylrecords
+GET https://localhost:5001/odata/vinylrecords
+Accept: application/json
+
+### odata/vinylrecords Metadata
+GET https://localhost:5001/odata/$metadata#VinylRecords
+Accept: application/json
