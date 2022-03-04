@@ -30,6 +30,27 @@ namespace AirVinyl.Controllers
             return Ok(await _airVinylDbContext.People.ToListAsync());
         }
 
+        // People(1)
+        // [EnableQuery]
+        public IActionResult Get(int key)
+        {
+            //var person = _airVinylDbContext.People.Where(p => p.PersonId == key);
+            var person = _airVinylDbContext.People.FirstOrDefault(p => p.PersonId == key);
+
+            // if (!person.Any())
+            // {
+            //     return NotFound();
+            // }
+
+            if (person == null)
+            {
+                return NotFound();
+            }
+
+            //return Ok(SingleResult.Create(people));
+            return Ok(person);
+        }
+
         // [EnableQuery(MaxExpansionDepth = 3, MaxSkip = 10, MaxTop = 5, PageSize = 4)]
         // public IActionResult Get()
         // {
@@ -37,20 +58,7 @@ namespace AirVinyl.Controllers
         // }
 
 
-        // People(1)
-//        [EnableQuery]
-//        public IActionResult Get(int key)
-//        {
-//            var people = _airVinylDbContext.People
-//                .Where(p => p.PersonId == key);
-//
-//            if (!people.Any())
-//            {
-//                return NotFound();
-//            }
-//
-//            return Ok(SingleResult.Create(people));
-//        }
+
 //
 //        [HttpGet("odata/People({key})/Email")]
 //        [HttpGet("odata/People({key})/FirstName")]

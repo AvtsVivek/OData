@@ -6,6 +6,14 @@
 GET https://localhost:5001/odata
 Accept: application/json
 
+### odata with meta. This will give the same as above
+GET https://localhost:5001/odata
+Accept: application/json;odata.metadata=full
+
+### odata with meta none
+GET https://localhost:5001/odata
+Accept: application/json;odata.metadata=none
+
 ### odata metadata
 GET https://localhost:5001/odata/$metadata
 Accept: application/json
@@ -14,14 +22,58 @@ Accept: application/json
 GET https://localhost:5001/odata/people
 Accept: application/json
 
-### odata people
+### odata people with metadata
+GET https://localhost:5001/odata/people
+Accept: application/json;odata.metadata=minimal
+
+### odata people with metadata full
+GET https://localhost:5001/odata/people
+Accept: application/json;odata.metadata=full
+
+### odata people with metadata none
+GET https://localhost:5001/odata/people
+Accept: application/json;odata.metadata=none
+
+### odata people 
 GET https://localhost:5001/odata/$metadata#People
 Accept: application/json
+
+### odata people with metadata
+GET https://localhost:5001/odata/$metadata#People
+Accept: application/json;odata.metadata=full
 
 ### odata/vinylrecords
 GET https://localhost:5001/odata/vinylrecords
 Accept: application/json
 
+### odata/vinylrecords with metadata
+GET https://localhost:5001/odata/vinylrecords
+Accept: application/json;odata.metadata=full
+
 ### odata/vinylrecords Metadata
 GET https://localhost:5001/odata/$metadata#VinylRecords
 Accept: application/json
+
+### odata/people(1)
+GET https://localhost:5001/odata/people(1)
+Accept: application/json;odata.metadata=none
+
+### odata/people(1) minimal metadata
+GET https://localhost:5001/odata/people(1)
+Accept: application/json;odata.metadata=minimal
+
+### odata/people(1) minimal full
+GET https://localhost:5001/odata/people(1)
+Accept: application/json;odata.metadata=full
+
+### odata/vinylrecords(1)
+GET https://localhost:5001/odata/vinylrecords(1)
+Accept: application/json;odata.metadata=none
+
+### odata/vinylrecords(1) minimal metadata
+GET https://localhost:5001/odata/vinylrecords(1)
+Accept: application/json;odata.metadata=minimal
+
+### odata/vinylrecords(1) full meta
+GET https://localhost:5001/odata/vinylrecords(1)
+Accept: application/json;odata.metadata=full

@@ -27,19 +27,17 @@ namespace AirVinyl.Controllers
             return Ok(await _airVinylDbContext.VinylRecords.ToListAsync());
         }
 
-//        [HttpGet("VinylRecords({key})")]
-//        public async Task<IActionResult> GetOneVinylRecord(int key)
-//        {
-//            var vinylRecord = await _airVinylDbContext.VinylRecords
-//                .FirstOrDefaultAsync(p => p.VinylRecordId == key);
-
-//            if (vinylRecord == null)
-//            {
-//                return NotFound();
-//            }
-
-//            return Ok(vinylRecord);
-//        }
-
+        [HttpGet("VinylRecords({key})")]
+        public async Task<IActionResult> GetOneVinylRecord(int key)
+        {
+            var vinylRecord = await _airVinylDbContext.VinylRecords
+                .FirstOrDefaultAsync(p => p.VinylRecordId == key);
+                
+            if (vinylRecord == null)
+            {
+                return NotFound();
+            }
+            return Ok(vinylRecord);
+        }
     }
 }
