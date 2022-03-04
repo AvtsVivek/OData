@@ -154,6 +154,7 @@ namespace AirVinyl.Controllers
 
             return Ok(person.GetValue(collectionPopertyToGet));
         }
+        
 //
 //
 //        [HttpGet("odata/People({key})/VinylRecords")]
