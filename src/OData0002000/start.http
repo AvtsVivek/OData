@@ -77,3 +77,47 @@ Accept: application/json;odata.metadata=minimal
 ### odata/vinylrecords(1) full meta
 GET https://localhost:5001/odata/vinylrecords(1)
 Accept: application/json;odata.metadata=full
+
+### odata/people(20). 20 does not exist
+GET https://localhost:5001/odata/people(20)/Email
+Accept: application/json
+
+### odata/people(5). Try to get an UnexistingProperty
+GET https://localhost:5001/odata/people(5)/UnexistingProperty
+Accept: application/json
+
+### odata/people(1). Try to get Email for people
+GET https://localhost:5001/odata/people(1)/Email
+Accept: application/json;odata.metadata=none
+
+### odata/people(6). Try to get Email. 
+### This person does not have email. 204 No Content will be the reposonse
+GET https://localhost:5001/odata/people(6)/Email
+Accept: application/json;odata.metadata=full
+
+### odata/people(20). 20 does not exist
+GET https://localhost:5001/odata/people(20)/Email/$value
+Accept: application/json
+
+### odata/people(5). Try to get an UnexistingProperty
+GET https://localhost:5001/odata/people(5)/UnexistingProperty/$value
+Accept: application/json
+
+### odata/people(1). Try to get Email for people
+GET https://localhost:5001/odata/people(1)/Email/$value
+Accept: application/json;odata.metadata=none
+
+### odata/people(6). Try to get Email. 
+### This person does not have email. 204 No Content will be the reposonse
+GET https://localhost:5001/odata/people(6)/Email/$value
+Accept: application/json;odata.metadata=full
+
+### odata/people(1). collection of properties(Vinyl Records) with full metadata
+### This person does not have email. 204 No Content will be the reposonse
+GET https://localhost:5001/odata/people(1)/VinylRecords
+Accept: application/json;odata.metadata=full
+
+### odata/people(1). collection of properties(Vinyl Records) with full metadata
+### This person does not have email. 204 No Content will be the reposonse
+GET https://localhost:5001/odata/people(1)/VinylRecords
+Accept: application/json;odata.metadata=none

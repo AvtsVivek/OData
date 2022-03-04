@@ -1,4 +1,5 @@
 ﻿using AirVinyl.API.DbContexts;
+using AirVinyl.API.Helpers;
 using AirVinyl.Entities;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -58,103 +59,101 @@ namespace AirVinyl.Controllers
         // }
 
 
+        [HttpGet("odata/People({key})/Email")]
+        [HttpGet("odata/People({key})/FirstName")]
+        [HttpGet("odata/People({key})/LastName")]
+        [HttpGet("odata/People({key})/DateOfBirth")]
+        [HttpGet("odata/People({key})/Gender")]
+        public async Task<IActionResult> GetPersonProperty(int key)
+        {
+            var person = await _airVinylDbContext.People
+                .FirstOrDefaultAsync(p => p.PersonId == key);
 
-//
-//        [HttpGet("odata/People({key})/Email")]
-//        [HttpGet("odata/People({key})/FirstName")]
-//        [HttpGet("odata/People({key})/LastName")]
-//        [HttpGet("odata/People({key})/DateOfBirth")]
-//        [HttpGet("odata/People({key})/Gender")]
-//        public async Task<IActionResult> GetPersonProperty(int key)
-//        {
-//            var person = await _airVinylDbContext.People
-//                .FirstOrDefaultAsync(p => p.PersonId == key);
-//
-//            if (person == null)
-//            {
-//                return NotFound();
-//            }
-//
-//            var propertyToGet = new Uri(HttpContext.Request.GetEncodedUrl()).Segments.Last();
-//
-//            if (!person.HasProperty(propertyToGet))
-//            {
-//                return NotFound();
-//            }
-//
-//            var propertyValue = person.GetValue(propertyToGet);
-//
-//            if (propertyValue == null)
-//            {
-//                // null = no content
-//                return NoContent();
-//            }
-//
-//            return Ok(propertyValue);
-//        }
-//
-//
-//        [HttpGet("odata/People({key})/Email/$value")]
-//        [HttpGet("odata/People({key})/FirstName/$value")]
-//        [HttpGet("odata/People({key})/LastName/$value")]
-//        [HttpGet("odata/People({key})/DateOfBirth/$value")]
-//        [HttpGet("odata/People({key})/Gender/$value")]
-//        public async Task<IActionResult> GetPersonPropertyRawValue(int key)
-//        {
-//            var person = await _airVinylDbContext.People
-//              .FirstOrDefaultAsync(p => p.PersonId == key);
-//
-//            if (person == null)
-//            {
-//                return NotFound();
-//            }
-//
-//            var url = HttpContext.Request.GetEncodedUrl();
-//            var propertyToGet = new Uri(url).Segments[^2].TrimEnd('/');
-//
-//            if (!person.HasProperty(propertyToGet))
-//            {
-//                return NotFound();
-//            }
-//
-//            var propertyValue = person.GetValue(propertyToGet);
-//
-//            if (propertyValue == null)
-//            {
-//                // null = no content
-//                return NoContent();
-//            }
-//
-//            return Ok(propertyValue.ToString());
-//        }
-//
-//        // odata/People(key)/VinylRecords
-//
-//        //[EnableQuery]
-//        //[HttpGet("odata/People({key})/VinylRecords")]
-//        ////[HttpGet("People({key})/Friends")]
-//        ////[HttpGet("People({key})/Addresses")]
-//        //public IActionResult GetPersonCollectionProperty(int key)
-//        //{
-//        //    var collectionPopertyToGet = new Uri(HttpContext.Request.GetEncodedUrl())
-//        //        .Segments.Last();
-//
-//        //    var person = _airVinylDbContext.People
-//        //          .Include(collectionPopertyToGet)
-//        //          .FirstOrDefault(p => p.PersonId == key);
-//
-//        //    if (person == null)
-//        //    {
-//        //        return NotFound();
-//        //    }
-//
-//        //    if (!person.HasProperty(collectionPopertyToGet))
-//        //    {
-//        //        return NotFound();
-//        //    }
-//
-//        //    return Ok(person.GetValue(collectionPopertyToGet));
-//        //}
+            if (person == null)
+            {
+                return NotFound();
+            }
+
+            var propertyToGet = new Uri(HttpContext.Request.GetEncodedUrl()).Segments.Last();
+
+            if (!person.HasProperty(propertyToGet))
+            {
+                return NotFound();
+            }
+
+            var propertyValue = person.GetValue(propertyToGet);
+
+            if (propertyValue == null)
+            {
+                // null = no content
+                return NoContent();
+            }
+
+            return Ok(propertyValue);
+        }
+
+
+        [HttpGet("odata/People({key})/Email/$value")]
+        [HttpGet("odata/People({key})/FirstName/$value")]
+        [HttpGet("odata/People({key})/LastName/$value")]
+        [HttpGet("odata/People({key})/DateOfBirth/$value")]
+        [HttpGet("odata/People({key})/Gender/$value")]
+        public async Task<IActionResult> GetPersonPropertyRawValue(int key)
+        {
+            var person = await _airVinylDbContext.People
+              .FirstOrDefaultAsync(p => p.PersonId == key);
+
+            if (person == null)
+            {
+                return NotFound();
+            }
+
+            var url = HttpContext.Request.GetEncodedUrl();
+            var propertyToGet = new Uri(url).Segments[^2].TrimEnd('/');
+
+            if (!person.HasProperty(propertyToGet))
+            {
+                return NotFound();
+            }
+
+            var propertyValue = person.GetValue(propertyToGet);
+
+            if (propertyValue == null)
+            {
+                // null = no content
+                return NoContent();
+            }
+
+            return Ok(propertyValue.ToString());
+        }
+
+        // odata/People(key)/VinylRecords
+
+        //[EnableQuery]
+        [HttpGet("odata/People({key})/VinylRecords")]
+        //[HttpGet("People({key})/Friends")]
+        //[HttpGet("People({key})/Addresses")]
+        public IActionResult GetPersonCollectionProperty(int key)
+        {
+            var collectionPopertyToGet = new Uri(HttpContext.Request.GetEncodedUrl())
+            .Segments.Last();
+
+            var person = _airVinylDbContext.People
+                .Include(collectionPopertyToGet)
+                .FirstOrDefault(p => p.PersonId == key);
+
+            if (person == null)
+            {
+                return NotFound();
+            }
+
+            if (!person.HasProperty(collectionPopertyToGet))
+            {
+                return NotFound();
+            }
+
+            return Ok(person.GetValue(collectionPopertyToGet));
+        }
 //
 //
 //        [HttpGet("odata/People({key})/VinylRecords")]
