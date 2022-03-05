@@ -1,0 +1,12 @@
+### odata
+POST https://localhost:5001/odata/People HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{    
+    "FirstName":"John",
+    "LastName":"Smith",
+    "Email": "john.smith@someprovider.com",    
+    "Gender":"Male",
+    "DateOfBirth": "1980-01-30"
+}

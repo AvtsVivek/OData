@@ -121,3 +121,5 @@ Accept: application/json;odata.metadata=full
 ### This person does not have email. 204 No Content will be the reposonse
 GET https://localhost:5001/odata/people(1)/VinylRecords
 Accept: application/json;odata.metadata=none
+
+

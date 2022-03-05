@@ -1,3 +1,4 @@
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -16,10 +17,17 @@ public class Program
         CreateHostBuilder(args).Build().Run();
     }
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args,
+        AutofacServiceProviderFactory? autofacServiceProviderFactory = null)
+    {
+        if (autofacServiceProviderFactory == null)
+            autofacServiceProviderFactory = new AutofacServiceProviderFactory();
+        var hostBuilder = Host.CreateDefaultBuilder(args)
+            .UseServiceProviderFactory(autofacServiceProviderFactory)
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
             });
+        return hostBuilder;
+    }
 }

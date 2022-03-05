@@ -133,26 +133,26 @@ namespace AirVinyl.Controllers
         [HttpGet("odata/People({key})/VinylRecords")]
         //[HttpGet("People({key})/Friends")]
         //[HttpGet("People({key})/Addresses")]
-        public IActionResult GetPersonCollectionProperty(int key)
+        public async Task<IActionResult> GetPersonCollectionProperty(int key)
         {
-            var collectionPopertyToGet = new Uri(HttpContext.Request.GetEncodedUrl())
+            var collectionPropertyToGet = new Uri(HttpContext.Request.GetEncodedUrl())
             .Segments.Last();
 
-            var person = _airVinylDbContext.People
-                .Include(collectionPopertyToGet)
-                .FirstOrDefault(p => p.PersonId == key);
+            var person = await _airVinylDbContext.People
+                .Include(collectionPropertyToGet)
+                .FirstOrDefaultAsync(p => p.PersonId == key);
 
             if (person == null)
             {
                 return NotFound();
             }
 
-            if (!person.HasProperty(collectionPopertyToGet))
+            if (!person.HasProperty(collectionPropertyToGet))
             {
                 return NotFound();
             }
 
-            return Ok(person.GetValue(collectionPopertyToGet));
+            return Ok(person.GetValue(collectionPropertyToGet));
         }
         
 //
@@ -194,21 +194,19 @@ namespace AirVinyl.Controllers
 //            return Ok(SingleResult.Create(vinylRecord));
 //        }
 //
-//        [HttpPost("odata/People")]
-//        public async Task<IActionResult> CreatePerson([FromBody] Person person)
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return BadRequest(ModelState);
-//            }
-//
-//            // add the person to the People collection
-//            _airVinylDbContext.People.Add(person);
-//            await _airVinylDbContext.SaveChangesAsync();
-//
-//            // return the created person 
-//            return Created(person);
-//        }
+       [HttpPost("odata/People")]
+       public async Task<IActionResult> CreatePerson([FromBody] Person person)
+       {
+           if (!ModelState.IsValid)
+           {
+               return BadRequest(ModelState);
+           }
+           // add the person to the People collection
+           _airVinylDbContext.People.Add(person);
+           await _airVinylDbContext.SaveChangesAsync();
+           // return the created person 
+           return Created(person);
+       }
 //
 //        [HttpPut("odata/People({key})")]
 //        public async Task<IActionResult> UpdatePerson(int key, [FromBody] Person person)
