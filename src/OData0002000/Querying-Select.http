@@ -1,0 +1,21 @@
+### odata people with just email
+GET https://localhost:5001/odata/People?$select=Email HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+### odata people with just email, full metadata.
+### This is returning the full entity. Not sure why.
+### Something wrong?
+GET https://localhost:5001/odata/People?$select=Email HTTP/1.1
+Accept: application/json;odata.metadata=full
+Content-Type: application/json
+
+### odata people with just email, none metadata
+GET https://localhost:5001/odata/People?$select=Email HTTP/1.1
+Accept: application/json;odata.metadata=none
+Content-Type: application/json
+
+### odata people with just email, minimal metadata
+GET https://localhost:5001/odata/People?$select=Email HTTP/1.1
+Accept: application/json;odata.metadata=minimal
+Content-Type: application/json

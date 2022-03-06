@@ -32,7 +32,7 @@ public class Startup
                         new AirVinylEntityDataModel().GetEntityDataModel()
                         //, batchHandler
                         )
-                    //.Select()
+                    .Select()
                     //.Expand()
                     //.OrderBy()
                     //.SetMaxTop(10)

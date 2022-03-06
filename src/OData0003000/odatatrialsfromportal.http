@@ -1,0 +1,131 @@
+@baseUrl = https://services.odata.org/V3/(S(vwnqy0wv2r0ovhyg1ru1uhqx))/OData/OData.svc
+
+### GET service Def
+GET {{baseUrl}} HTTP/1.1
+
+### Get metatdata
+GET {{baseUrl}}/$metadata HTTP/1.1
+
+### Get metatdata. Trying to get the format in json. This does not work
+GET {{baseUrl}}/$metadata&$format=json HTTP/1.1
+
+### GET service Def in xml format, default
+GET {{baseUrl}}?$format=xml HTTP/1.1
+
+### GET service Def in json format
+GET {{baseUrl}}?$format=json HTTP/1.1
+
+### GET Product info in json format
+GET {{baseUrl}}/Products?$format=json HTTP/1.1
+
+### GET product Def in xml format. Xml is not supported.
+GET {{baseUrl}}/Products?$format=xml HTTP/1.1
+
+### Get produt 0 in json format
+GET {{baseUrl}}/Products(0)?$format=json HTTP/1.1
+
+### Get produt 0 in xml format, not supported
+GET {{baseUrl}}/Products(0)?$format=xml HTTP/1.1
+
+### Get produt 0 in xml default
+GET {{baseUrl}}/Products(0) HTTP/1.1
+
+### Get produt 0 in json
+GET {{baseUrl}}/Products(0) HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+### Filter product whose name is bread. 
+GET {{baseUrl}}/Products?$filter=Name eq 'Bread' HTTP/1.1
+
+### Filter product whose name is bread in json
+GET {{baseUrl}}/Products?$filter=Name eq 'Bread' HTTP/1.1
+Accept: application/json
+
+### Filter product whose rating is 4 in json
+GET {{baseUrl}}/Products?$filter=Rating eq 4 HTTP/1.1
+Accept: application/json
+
+### Filter product whose rating is 3 in json
+GET {{baseUrl}}/Products?$filter=Rating eq 3 HTTP/1.1
+Accept: application/json
+
+### Filter product whose rating is 3 and Name is milk in json
+GET {{baseUrl}}/Products?$filter=Rating eq 3 and Name eq 'Milk' HTTP/1.1
+Accept: application/json
+
+### Filter product whose rating is 4 and name is bread in json
+GET {{baseUrl}}/Products?$filter=Rating eq 4 and Name eq 'Bread' HTTP/1.1
+Accept: application/json
+
+### Filter product whose rating is 5 and name is bread in json
+### No product is found. An empty array is returned.
+GET {{baseUrl}}/Products?$filter=Rating eq 5 and Name eq 'Bread' HTTP/1.1
+Accept: application/json
+
+### Filter product whose name has got 'i' in json
+GET {{baseUrl}}/Products?$filter=substringof('i', Name) eq true HTTP/1.1
+Accept: application/json
+
+### Filter product whose name has got 'in' in json
+GET {{baseUrl}}/Products?$filter=substringof('in', Name) eq true HTTP/1.1
+Accept: application/json
+
+### Filter product whose name ends with Cola(upper case C) in json
+GET {{baseUrl}}/Products?$filter=endswith(Name, 'Cola') eq true HTTP/1.1
+Accept: application/json
+
+### Filter product whose name ends with cola(lower case c) in json
+### Reference: https://www.odata.org/documentation/odata-version-2-0/uri-conventions/
+GET {{baseUrl}}/Products?$filter=endswith(tolower(Name), 'cola') eq true HTTP/1.1
+Accept: application/json
+
+### Filter product whose name has a lenght of 5 or less in json format
+GET {{baseUrl}}/Products?$filter=length(Name) le 5 HTTP/1.1
+Accept: application/json
+
+### Specify the format as a query string. Note here the header Accept: application/json
+### is not needed any more this way
+GET {{baseUrl}}/Products?$filter=length(Name) le 5&$format=json HTTP/1.1
+
+### Specify the format as a query string. Note here the header Accept: application/json
+### is not needed any more this way
+### Selection introduction. We want only name
+GET {{baseUrl}}/Products?$format=json&$select=Name HTTP/1.1
+
+### Selection introduction along with filtering.
+GET {{baseUrl}}/Products?$filter=length(Name) le 5&$format=json&$select=Name,Description HTTP/1.1
+
+### Selection. All fields with *
+GET {{baseUrl}}/Products?$filter=length(Name) le 5&$format=json&$select=* HTTP/1.1
+
+### Count operator. Gets the count of all of the products
+### Note $count is after the / and not ?. Its not a part of query string.
+GET {{baseUrl}}/Products/$count HTTP/1.1
+
+### Count operator with filter. Gets the count of all the products whose name length is less than equal to 5
+GET {{baseUrl}}/Products/$count?$filter=length(Name) le 5 HTTP/1.1
+
+### Get top 5 products
+GET {{baseUrl}}/Products?$top=5 HTTP/1.1
+
+### Get top 5 products, json format
+GET {{baseUrl}}/Products?$top=5&$format=json HTTP/1.1
+
+### Get top 5 products, json format, just names and nothing else
+GET {{baseUrl}}/Products?$top=5&$format=json&$select=Name HTTP/1.1
+
+### Skip introduction. Skip is used for pagination.
+### Get top 4 products, json format, just names and Id. Skip the first 2
+GET {{baseUrl}}/Products?$top=5&$format=json&$skip=2&$select=ID,Name HTTP/1.1
+
+### Orderby introduction. Order by price.
+### Get top 4 products, json format, just names and Id and price ascending(default)
+GET {{baseUrl}}/Products?$top=5&$format=json&$select=ID,Name,Price&$orderby=Price asc HTTP/1.1
+
+### Orderby introduction. Order by price desc.
+### Get top 4 products, json format, just names and Id and price descing
+GET {{baseUrl}}/Products?$top=5&$format=json&$select=ID,Name,Price&$orderby=Price desc&$filter=Price lt 100 HTTP/1.1
+
+### Creation
+### https://youtu.be/oQWkZ-n0SZk?t=2633

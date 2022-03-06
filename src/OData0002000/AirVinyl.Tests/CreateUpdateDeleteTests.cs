@@ -9,9 +9,56 @@ using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using System.Text;
 using System.Text.Json;
+using System;
+using System.Linq;
 
 namespace AirVinyl.Tests
 {
+
+    public class QueryTests : CustomWebApplicationFactory<TestStartup>
+    {
+        private readonly HttpClient _httpClient;
+        private readonly MediaTypeFormatterCollection formatters;
+
+        public QueryTests()
+        {
+            _httpClient = CreateClient();
+            formatters = new MediaTypeFormatterCollection();
+            formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue(ContentType.RestfulJson));
+            formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue(ContentType.ProblemJson));
+        }
+
+        protected override void ConfigureInMemoryDatabase(IServiceCollection services, bool bConfigureDb = true)
+        {
+            base.ConfigureInMemoryDatabase(services, false);
+        }
+
+        [Fact]
+        public async Task SelectQueryForEmailOnPersonEntity_RetunsOk()
+        {
+            var response = await _httpClient.GetAsync("/odata/people?$select=Email");
+            var responseStream = await _httpClient.GetStreamAsync("/odata/people?$select=Email");
+            var people = await JsonSerializer.DeserializeAsync<ExpectedPeopleModel>(responseStream);
+
+
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            people.Should().NotBeNull();
+            people!.value.Should().NotBeNull();
+            people!.value.Count.Should().BePositive();
+            stringResponse.Should().NotBe(String.Empty);
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            people!.value.ToArray()[0].Email.Should().NotBeNullOrEmpty();
+            people!.value.ToArray()[1].Email.Should().NotBeNullOrEmpty();
+            // We expect other values to be null
+            people!.value.ToArray()[0].FirstName.Should().BeNull();
+            people!.value.ToArray()[0].LastName.Should().BeNull();
+            people!.value.ToArray()[1].FirstName.Should().BeNull();
+            people!.value.ToArray()[1].LastName.Should().BeNull();
+        }
+    }
+
     public class CreateUpdateDeleteTests : CustomWebApplicationFactory<TestStartup>
     {
         private readonly HttpClient _httpClient;
