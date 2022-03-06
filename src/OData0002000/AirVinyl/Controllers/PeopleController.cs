@@ -207,82 +207,115 @@ namespace AirVinyl.Controllers
            // return the created person 
            return Created(person);
        }
-//
-//        [HttpPut("odata/People({key})")]
-//        public async Task<IActionResult> UpdatePerson(int key, [FromBody] Person person)
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return BadRequest(ModelState);
-//            }
-//
-//            var currentPerson = await _airVinylDbContext.People
-//              .FirstOrDefaultAsync(p => p.PersonId == key);
-//
-//            if (currentPerson == null)
-//            {
-//                return NotFound();
-//
-//                // Alternative: if the person isn't found: Upsert.  This must only
-//                // be used if the responsibility for creating the key isn't at 
-//                // server-level.  In our case, we're using auto-increment fields,
-//                // so this isn't allowed - code is for illustration purposes only!
-//                //if (currentPerson == null)
-//                //{
-//                //    // the key from the URI is the key we should use
-//                //    person.PersonId = key;
-//                //    _airVinylDbContext.People.Add(person);
-//                //    await _airVinylDbContext.SaveChangesAsync();
-//                //    return Created(person);
-//                //}
-//
-//            }
-//
-//            person.PersonId = currentPerson.PersonId;
-//            _airVinylDbContext.Entry(currentPerson).CurrentValues.SetValues(person);
-//            await _airVinylDbContext.SaveChangesAsync();
-//
-//            return NoContent();
-//        }
-//
-//        [HttpPatch("odata/People({key})")]
-//        public async Task<IActionResult> PartiallyUpdatePerson(int key,
-//            [FromBody] Delta<Person> patch)
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return BadRequest(ModelState);
-//            }
-//
-//            var currentPerson = await _airVinylDbContext.People
-//                           .FirstOrDefaultAsync(p => p.PersonId == key);
-//
-//            if (currentPerson == null)
-//            {
-//                return NotFound();
-//            }
-//
-//            patch.Patch(currentPerson);
-//            await _airVinylDbContext.SaveChangesAsync();
-//
-//            return NoContent();
-//        }
-//
-//        [HttpDelete("odata/People({key})")]
-//        public async Task<IActionResult> DeleteOnePerson(int key)
-//        {
-//            var currentPerson = await _airVinylDbContext.People
-//                .FirstOrDefaultAsync(p => p.PersonId == key);
-//
-//            if (currentPerson == null)
-//            {
-//                return NotFound();
-//            }
-//
-//            _airVinylDbContext.People.Remove(currentPerson);
-//            await _airVinylDbContext.SaveChangesAsync();
-//            return NoContent();
-//        }
+
+        [HttpPut("odata/People({key})")]
+        public async Task<IActionResult> UpdatePerson(int key, [FromBody] Person person)
+        {
+            // PUT is not the preferred way of updating an entity.
+            // It's a full update, which means by definition that if we omit certain fields
+            // in the request body, these fields should be put to their default values,
+            // and that is rarely what you want.
+            // PATCH is the preferred way
+
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var currentPerson = await _airVinylDbContext.People
+              .FirstOrDefaultAsync(p => p.PersonId == key);
+
+            if (currentPerson == null)
+            {
+                return NotFound();
+
+                // Alternative: if the person isn't found: Upsert.
+                // That's a combination of insert and update.
+                // This principle means that rather than returning a 404 when the person doesn't exist yet,
+                // the update action can also create that person,
+                // and it should then return a 201 Created containing the newly created person.
+                // This must only be used if the responsibility for creating the key isn't at 
+                // server-level.  In our case, we're using auto-increment fields,
+                // so this isn't allowed - code is for illustration purposes only!
+                //if (currentPerson == null)
+                //{
+                //    // the key from the URI is the key we should use
+                //    person.PersonId = key;
+                //    _airVinylDbContext.People.Add(person);
+                //    await _airVinylDbContext.SaveChangesAsync();
+                //    return Created(person);
+                //}
+
+            }
+
+            person.PersonId = currentPerson.PersonId;
+            _airVinylDbContext.Entry(currentPerson).CurrentValues.SetValues(person);
+            await _airVinylDbContext.SaveChangesAsync();
+
+            return NoContent();
+            // Or
+            // return Ok(currentPerson);
+        }
+
+              
+        // Services should support Patch as the preferred means of updating an entity. 
+        // Through Patch, we ensure that only those values specified in the request body are updated. 
+        // You can think of this as a change set. 
+        // Thus, the content in the request payload is merged with the entity's 
+        // current state applying the update only to those components specified in the request body. 
+        // So the request is sent to the URI of the entity we want to update. 
+        // So we're getting our people controller and we want to send the patch 
+        // request to odata/People with the person's key between rounded brackets.
+        /// <summary>
+        ///  Patch is not currently working properly. So go with Put
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="delta"></param>
+        /// <returns></returns>
+        
+
+        [HttpPatch("odata/People({key})")]
+        public async Task<IActionResult> PartiallyUpdatePerson(int key,
+            [FromBody] Delta<Person> delta)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var currentPerson = await _airVinylDbContext.People
+                           .FirstOrDefaultAsync(p => p.PersonId == key);
+
+            if (currentPerson == null)
+            {
+                return NotFound();
+            }
+
+            delta.CopyChangedValues(currentPerson);
+
+            //delta.Patch(currentPerson);
+
+            await _airVinylDbContext.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpDelete("odata/People({key})")]
+        public async Task<IActionResult> DeleteOnePerson(int key)
+        {
+            var currentPerson = await _airVinylDbContext.People
+                .FirstOrDefaultAsync(p => p.PersonId == key);
+
+            if (currentPerson == null)
+            {
+                return NotFound();
+            }
+
+            _airVinylDbContext.People.Remove(currentPerson);
+            await _airVinylDbContext.SaveChangesAsync();
+            return NoContent();
+        }
 //
 //        [HttpPost("odata/People({key})/VinylRecords")]
 //        public async Task<IActionResult> CreateVinylRecordForPerson(int key,

@@ -1,4 +1,4 @@
-### odata
+### Create a person entity.
 POST https://localhost:5001/odata/People HTTP/1.1
 Accept: application/json
 Content-Type: application/json
@@ -10,3 +10,71 @@ Content-Type: application/json
     "Gender":"Male",
     "DateOfBirth": "1980-01-30"
 }
+
+### Try creating a person without first name. 
+### You should get a bad request.
+POST https://localhost:5001/odata/People HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{    
+    "LastName":"Smith",
+    "Email": "john.smith@someprovider.com",    
+    "Gender":"Male",
+    "DateOfBirth": "1980-01-30"
+}
+
+### Update a persone with put. 
+### Note that Email is left out.
+PUT https://localhost:5001/odata/People(3) HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{   
+    "FirstName": "Nick",
+    "LastName":"Missorten",
+    "DateOfBirth": "1983-05-18T00:00:00+02:00",
+    "Gender":"Male",
+    "NumberOfRecordsOnWishList": 23,
+    "AmountOfCashToSpend": 2500
+}
+
+### Now after Updating, try getting the same a persone with put. 
+### Note in the response, the email is null
+GET https://localhost:5001/odata/People(3) HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+### Try Update using put with an id that does not match.
+### a persone with put. 
+PUT https://localhost:5001/odata/People(3) HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{   
+    "PersonId": 999,
+    "FirstName": "Nick",
+    "LastName":"Missorten",
+    "DateOfBirth": "1983-05-18T00:00:00+02:00",
+    "Gender":"Male",
+    "Email": "nick@someProvider.com",
+    "NumberOfRecordsOnWishList": 23,
+    "AmountOfCashToSpend": 2500
+}
+
+
+### Update with Patch
+### Patch is not working correctly.
+PATCH https://localhost:5001/odata/People(3) HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{   
+    "FirstName": "NickNew",
+    "Email": "nicknew@someProvider.com",
+}
+
+### Delete 
+DELETE https://localhost:5001/odata/People(3) HTTP/1.1
+Accept: application/json
+Content-Type: application/json
