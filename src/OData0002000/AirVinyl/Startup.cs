@@ -42,8 +42,9 @@ public class Startup
 
         services.AddDbContext<AirVinylDbContext>(options =>
         {
-            options.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=AirVinylDemoDB;Trusted_Connection=True;");
+            //options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AirVinylDemoDbNew;Trusted_Connection=True;");
+                     
+            options.UseSqlite(@"Data Source=database.sqlite;");
         });
     }
     public virtual void ConfigureContainer(ContainerBuilder builder)

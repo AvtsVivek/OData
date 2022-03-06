@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Address" Category="EntityType" Annotations="RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="52.5316666666669,67.98,211.37,197.88" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="Address" Name="Address" />
+    <Node Id="Address.City" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 100" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="72.5316666666669,107.98,50,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="City" MaxLength="(100)" Name="City" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="Address.Country" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 100" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="72.5316666666669,163.94,62.0866666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="Country" MaxLength="(100)" Name="Country" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="Address.PostalCode" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 10" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="164.618333333334,163.94,79.2833333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="PostalCode" MaxLength="(10)" Name="PostalCode" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="Address.RecordStoreId" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="72.5316666666669,219.9,94.71,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="RecordStoreId" MaxLength="None" Name="RecordStoreId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="Address.Street" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 200" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="152.531666666667,107.98,50.8466666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="Street" MaxLength="(200)" Name="Street" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="IModel" Category="Model" Annotations="BaseTypeDiscoveryConvention:DerivedTypes: System.Collections.Generic.Dictionary`2[System.Type,System.Collections.Generic.List`1[Microsoft.EntityFrameworkCore.Metadata.IConventionEntityType]] Relational:MaxIdentifierLength: 128 RelationshipDiscoveryConvention:InverseNavigationCandidates: System.Collections.Generic.Dictionary`2[System.Type,System.Collections.Generic.SortedSet`1[System.Type]] SqlServer:ValueGenerationStrategy: IdentityColumn" Bounds="0,0,1009.87166666667,729.6" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" Label="AirVinylDbContext" ProductVersion="6.0.2" PropertyAccessMode="PropertyAccessMode.Default" />
+    <Node Id="Person" Category="EntityType" Annotations="Relational:TableName: People RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="326.551666666667,339.8,377.33,253.84" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="Person" Name="Person" />
+    <Node Id="Person.AmountOfCashToSpend" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="Relational:ColumnType: decimal(8,2)" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="346.551666666667,491.72,146.683333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="AmountOfCashToSpend" MaxLength="None" Name="AmountOfCashToSpend" PropertyAccessMode="PropertyAccessMode.Default" Type="decimal" ValueGenerated="None" />
+    <Node Id="Person.DateOfBirth" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="450.348333333333,435.76,82.4833333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="DateOfBirth" MaxLength="None" Name="DateOfBirth" PropertyAccessMode="PropertyAccessMode.Default" Type="DateTimeOffset" ValueGenerated="None" />
+    <Node Id="Person.Email" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 100" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="346.551666666667,379.8,50,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="Email" MaxLength="(100)" Name="Email" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="Person.FirstName" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 50" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="346.551666666667,435.76,73.7966666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="FirstName" MaxLength="(50)" Name="FirstName" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="Person.Gender" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="426.551666666667,379.8,58.8166666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Gender" MaxLength="None" Name="Gender" PropertyAccessMode="PropertyAccessMode.Default" Type="Gender" ValueGenerated="None" />
+    <Node Id="Person.LastName" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 50" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="611.268333333333,379.8,72.6133333333332,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="LastName" MaxLength="(50)" Name="LastName" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="Person.NumberOfRecordsOnWishList" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="346.551666666667,547.68,177.973333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="NumberOfRecordsOnWishList" MaxLength="None" Name="NumberOfRecordsOnWishList" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="Person.PersonId" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="515.368333333333,379.8,65.9000000000001,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="PersonId" MaxLength="None" Name="PersonId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="Person.VinylRecords" Category="Navigation Collection" Bounds="562.831666666667,435.76,103.403333333333,25.96" Dependent="VinylRecord" Field="" Inverse="Person" Label="VinylRecords (*)" Name="VinylRecords" Principal="" PropertyAccessMode="PropertyAccessMode.Default" Type="ICollection&lt;VinylRecord&gt;" />
+    <Node Id="PressingDetail" Category="EntityType" Annotations="Relational:TableName: PressingDetails RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="734.561666666667,395.76,255.31,141.92" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="PressingDetail" Name="PressingDetail" />
+    <Node Id="PressingDetail.Description" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 200" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="754.561666666667,491.72,80.2533333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Description" MaxLength="(200)" Name="Description" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="PressingDetail.Grams" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="838.248333333333,435.76,53.9433333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Grams" MaxLength="None" Name="Grams" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="PressingDetail.Inches" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="754.561666666667,435.76,53.6866666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Inches" MaxLength="None" Name="Inches" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="PressingDetail.PressingDetailId" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="864.815,491.72,105.056666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="PressingDetailId" MaxLength="None" Name="PressingDetailId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="Rating" Category="EntityType" Annotations="RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="294.673333333333,67.98,245.086666666667,197.88" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="Rating" Name="Rating" />
+    <Node Id="Rating.RatedBy" Category="Navigation Property" Bounds="314.673333333333,163.94,80.3766666666667,25.96" Dependent="" Field="" Inverse="" Label="RatedBy (1)" Name="RatedBy" Principal="Person" PropertyAccessMode="PropertyAccessMode.Default" Type="Person" />
+    <Node Id="Rating.RatedByPersonId" Category="Property Foreign" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="314.673333333333,219.9,109.28,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="True" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="RatedByPersonId" MaxLength="None" Name="RatedByPersonId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="Rating.RatingId" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="394.673333333333,107.98,64.3733333333333,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="RatingId" MaxLength="None" Name="RatingId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="Rating.RecordStoreId" Category="Property Foreign" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="425.05,163.94,94.71,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="True" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="RecordStoreId" MaxLength="None" Name="RecordStoreId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="Rating.Value" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="314.673333333333,107.98,50,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Value" MaxLength="None" Name="Value" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="RecordStore" Category="EntityType" Annotations="DiscriminatorProperty: Discriminator DiscriminatorValue: RecordStore Relational:TableName: RecordStores RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="" Bounds="20,367.78,276.433333333333,197.88" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="RecordStore" Name="RecordStore" />
+    <Node Id="RecordStore.Discriminator" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="AfterSaveBehavior: Throw ValueGeneratorFactoryType: Microsoft.EntityFrameworkCore.ValueGeneration.DiscriminatorValueGeneratorFactory" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="40,463.74,90.4466666666667,25.96" Field="nofield" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="True" IsUnicode="True" Label="Discriminator" MaxLength="None" Name="Discriminator" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="RecordStore.Name" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 150" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="120,407.78,51.6966666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Name" MaxLength="(150)" Name="Name" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="RecordStore.Ratings" Category="Navigation Collection" Bounds="201.696666666667,407.78,74.7366666666667,25.96" Dependent="Rating" Field="" Inverse="" Label="Ratings (*)" Name="Ratings" Principal="" PropertyAccessMode="PropertyAccessMode.Default" Type="ICollection&lt;Rating&gt;" />
+    <Node Id="RecordStore.RecordStoreId" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="160.446666666667,463.74,94.71,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="RecordStoreId" MaxLength="None" Name="RecordStoreId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="RecordStore.StoreAddress" Category="Navigation Property" Bounds="40,519.7,107.04,25.96" Dependent="Address" Field="" Inverse="" Label="StoreAddress (1)" Name="StoreAddress" Principal="" PropertyAccessMode="PropertyAccessMode.Default" Type="Address" />
+    <Node Id="RecordStore.Tags" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="ValueComparer: Microsoft.EntityFrameworkCore.ChangeTracking.ValueComparer`1[System.Collections.Generic.List`1[System.String]] ValueConverter: Microsoft.EntityFrameworkCore.Storage.ValueConversion.ValueConverter`2[System.Collections.Generic.List`1[System.String],System.String]" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="40,407.78,50,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="Tags" MaxLength="None" Name="Tags" PropertyAccessMode="PropertyAccessMode.Default" Type="List&lt;string&gt;" ValueGenerated="None" />
+    <Node Id="SpecializedRecordStore" Category="EntityType" Annotations="DiscriminatorProperty: DiscriminatorValue: SpecializedRecordStore RelationshipDiscoveryConvention:NavigationCandidates: System.Collections.Immutable.ImmutableSortedDictionary`2[System.Reflection.PropertyInfo,System.ValueTuple`2[System.Type,System.Nullable`1[System.Boolean]]]" BaseClass="RecordStore" Bounds="20,623.64,163.293333333333,85.96" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="SpecializedRecordStore" Name="SpecializedRecordStore" />
+    <Node Id="SpecializedRecordStore.Specialization" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="55.4466666666667,663.64,92.4,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="Specialization" MaxLength="None" Name="Specialization" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="VinylRecord" Category="EntityType" Annotations="" BaseClass="" Bounds="570.266666666667,40,345.9,253.84" ChangeTrackingStrategy="ChangeTrackingStrategy.Snapshot" Group="Expanded" IsAbstract="False" Label="VinylRecord" Name="VinylRecord" />
+    <Node Id="VinylRecord.Artist" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 150" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="590.266666666667,80,50,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Artist" MaxLength="(150)" Name="Artist" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="VinylRecord.CatalogNumber" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 50" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="590.266666666667,191.92,104.32,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="CatalogNumber" MaxLength="(50)" Name="CatalogNumber" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="VinylRecord.Person" Category="Navigation Property" Bounds="590.266666666667,135.96,72.6366666666667,25.96" Dependent="" Field="" Inverse="VinylRecords" Label="Person (1)" Name="Person" Principal="Person" PropertyAccessMode="PropertyAccessMode.Default" Type="Person" />
+    <Node Id="VinylRecord.PersonId" Category="Property Foreign" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="830.266666666667,80,65.9,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="True" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="PersonId" MaxLength="None" Name="PersonId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="VinylRecord.PressingDetail" Category="Navigation Property" Bounds="590.266666666667,247.88,111.793333333333,25.96" Dependent="" Field="" Inverse="" Label="PressingDetail (1)" Name="PressingDetail" Principal="PressingDetail" PropertyAccessMode="PropertyAccessMode.Default" Type="PressingDetail" />
+    <Node Id="VinylRecord.PressingDetailId" Category="Property Foreign" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="724.586666666667,191.92,105.056666666667,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="True" IsIndexed="True" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="PressingDetailId" MaxLength="None" Name="PressingDetailId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="None" />
+    <Node Id="VinylRecord.Title" Category="Property Required" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="MaxLength: 150" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="670.266666666667,80,50,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="True" IsShadow="False" IsUnicode="True" Label="Title" MaxLength="(150)" Name="Title" PropertyAccessMode="PropertyAccessMode.Default" Type="string" ValueGenerated="None" />
+    <Node Id="VinylRecord.VinylRecordId" Category="Property Primary" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="SqlServer:ValueGenerationStrategy: IdentityColumn" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="692.903333333333,135.96,93.0400000000001,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="True" IsRequired="True" IsShadow="False" IsUnicode="True" Label="VinylRecordId" MaxLength="None" Name="VinylRecordId" PropertyAccessMode="PropertyAccessMode.Default" Type="int" ValueGenerated="ValueGenerated.OnAdd" />
+    <Node Id="VinylRecord.Year" Category="Property Optional" AfterSaveBehavior="PropertySaveBehavior.Save" Annotations="" BeforeSaveBehavior="PropertySaveBehavior.Save" Bounds="750.266666666667,80,50,25.96" Field="" IsAlternateKey="False" IsConcurrencyToken="False" IsForeignKey="False" IsIndexed="False" IsPrimaryKey="False" IsRequired="False" IsShadow="False" IsUnicode="True" Label="Year" MaxLength="None" Name="Year" PropertyAccessMode="PropertyAccessMode.Default" Type="int?" ValueGenerated="None" />
+  </Nodes>
+  <Links>
+    <Link Source="Address" Target="Address.City" Category="Contains" />
+    <Link Source="Address" Target="Address.Country" Category="Contains" />
+    <Link Source="Address" Target="Address.PostalCode" Category="Contains" />
+    <Link Source="Address" Target="Address.RecordStoreId" Category="Contains" />
+    <Link Source="Address" Target="Address.Street" Category="Contains" />
+    <Link Source="Address" Target="RecordStore" Category="Foreign Key" Annotations="" Bounds="158.216659545898,265.859985351563,0,92.9200134277344" From="Address.RecordStoreId" IsUnique="True" Label="1:1" LabelBounds="142.676666666667,308.84,15.54,15.96" Name="Address -&gt; RecordStore" To="RecordStore.RecordStoreId" />
+    <Link Source="IModel" Target="Address" Category="Contains" />
+    <Link Source="IModel" Target="Person" Category="Contains" />
+    <Link Source="IModel" Target="PressingDetail" Category="Contains" />
+    <Link Source="IModel" Target="Rating" Category="Contains" />
+    <Link Source="IModel" Target="RecordStore" Category="Contains" />
+    <Link Source="IModel" Target="SpecializedRecordStore" Category="Contains" />
+    <Link Source="IModel" Target="VinylRecord" Category="Contains" />
+    <Link Source="Person" Target="Person.AmountOfCashToSpend" Category="Contains" />
+    <Link Source="Person" Target="Person.DateOfBirth" Category="Contains" />
+    <Link Source="Person" Target="Person.Email" Category="Contains" />
+    <Link Source="Person" Target="Person.FirstName" Category="Contains" />
+    <Link Source="Person" Target="Person.Gender" Category="Contains" />
+    <Link Source="Person" Target="Person.LastName" Category="Contains" />
+    <Link Source="Person" Target="Person.NumberOfRecordsOnWishList" Category="Contains" />
+    <Link Source="Person" Target="Person.PersonId" Category="Contains" />
+    <Link Source="Person" Target="Person.VinylRecords" Category="Contains" />
+    <Link Source="PressingDetail" Target="PressingDetail.Description" Category="Contains" />
+    <Link Source="PressingDetail" Target="PressingDetail.Grams" Category="Contains" />
+    <Link Source="PressingDetail" Target="PressingDetail.Inches" Category="Contains" />
+    <Link Source="PressingDetail" Target="PressingDetail.PressingDetailId" Category="Contains" />
+    <Link Source="Rating" Target="Person" Category="Foreign Key" Annotations="" Bounds="449.558624267578,265.859985351563,21.3735046386719,65.3854675292969" From="Rating.RatedByPersonId" IsUnique="False" Label="1:*" LabelBounds="466.216666666667,308.84,14.0733333333334,15.96" Name="Rating -&gt; Person" To="Person.PersonId" />
+    <Link Source="Rating" Target="Rating.RatedBy" Category="Contains" />
+    <Link Source="Rating" Target="Rating.RatedByPersonId" Category="Contains" />
+    <Link Source="Rating" Target="Rating.RatingId" Category="Contains" />
+    <Link Source="Rating" Target="Rating.RecordStoreId" Category="Contains" />
+    <Link Source="Rating" Target="Rating.Value" Category="Contains" />
+    <Link Source="Rating" Target="RecordStore" Category="Foreign Key" Annotations="" Bounds="249.575500488281,265.859985351563,82.1659851074219,95.1095275878906" From="Rating.RecordStoreId" IsUnique="False" Label="1:*" LabelBounds="287.716666666667,308.84,14.0733333333333,15.96" Name="Rating -&gt; RecordStore" To="RecordStore.RecordStoreId" />
+    <Link Source="RecordStore" Target="RecordStore.Discriminator" Category="Contains" />
+    <Link Source="RecordStore" Target="RecordStore.Name" Category="Contains" />
+    <Link Source="RecordStore" Target="RecordStore.Ratings" Category="Contains" />
+    <Link Source="RecordStore" Target="RecordStore.RecordStoreId" Category="Contains" />
+    <Link Source="RecordStore" Target="RecordStore.StoreAddress" Category="Contains" />
+    <Link Source="RecordStore" Target="RecordStore.Tags" Category="Contains" />
+    <Link Source="SpecializedRecordStore" Target="SpecializedRecordStore.Specialization" Category="Contains" />
+    <Link Source="VinylRecord" Target="Person" Category="Foreign Key" Annotations="" Bounds="617.188293457031,293.839996337891,29.5048217773438,38.7962951660156" From="VinylRecord.PersonId" IsUnique="False" Label="1:*" LabelBounds="629.216666666667,308.84,14.0733333333334,15.96" Name="VinylRecord -&gt; Person" To="Person.PersonId" />
+    <Link Source="VinylRecord" Target="PressingDetail" Category="Foreign Key" Annotations="" Bounds="793.59521484375,293.839996337891,37.1348266601563,93.5549011230469" From="VinylRecord.PressingDetailId" IsUnique="False" Label="1:*" LabelBounds="788.643333333333,308.84,14.0733333333333,15.96" Name="VinylRecord -&gt; PressingDetail" To="PressingDetail.PressingDetailId" />
+    <Link Source="VinylRecord" Target="VinylRecord.Artist" Category="Contains" />
+    <Link Source="VinylRecord" Target="VinylRecord.CatalogNumber" Category="Contains" />
+    <Link Source="VinylRecord" Target="VinylRecord.Person" Category="Contains" />
+    <Link Source="VinylRecord" Target="VinylRecord.PersonId" Category="Contains" />
+    <Link Source="VinylRecord" Target="VinylRecord.PressingDetail" Category="Contains" />
+    <Link Source="VinylRecord" Target="VinylRecord.PressingDetailId" Category="Contains" />
+    <Link Source="VinylRecord" Target="VinylRecord.Title" Category="Contains" />
+    <Link Source="VinylRecord" Target="VinylRecord.VinylRecordId" Category="Contains" />
+    <Link Source="VinylRecord" Target="VinylRecord.Year" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="EntityType" />
+    <Category Id="Foreign Key" />
+    <Category Id="Model" />
+    <Category Id="Navigation Collection" />
+    <Category Id="Navigation Property" />
+    <Category Id="Property Foreign" />
+    <Category Id="Property Optional" />
+    <Category Id="Property Primary" />
+    <Category Id="Property Required" />
+  </Categories>
+  <Properties>
+    <Property Id="AfterSaveBehavior" Group="Property Flags" DataType="System.String" />
+    <Property Id="Annotations" Description="Annotations" Group="Model Properties" DataType="System.String" />
+    <Property Id="BaseClass" Description="Base class" Group="Model Properties" DataType="System.String" />
+    <Property Id="BeforeSaveBehavior" Group="Property Flags" DataType="System.String" />
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="ChangeTrackingStrategy" Description="Change tracking strategy" Group="Model Properties" DataType="System.String" />
+    <Property Id="Dependent" Description="Dependent entity" Group="Model Properties" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="Field" Description="Backing field" Group="Model Properties" DataType="System.String" />
+    <Property Id="From" Description="Target property" Group="Model Properties" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="Inverse" Description="Inverse entity" Group="Model Properties" DataType="System.String" />
+    <Property Id="IsAbstract" Label="IsAbstract" Description="IsAbstract" Group="Model Properties" DataType="System.Boolean" />
+    <Property Id="IsAlternateKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsConcurrencyToken" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsForeignKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsIndexed" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsPrimaryKey" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsRequired" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsShadow" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsUnicode" Group="Property Flags" DataType="System.Boolean" />
+    <Property Id="IsUnique" Group="Model Properties" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="MaxLength" DataType="System.String" />
+    <Property Id="Name" Group="Model Properties" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="Principal" Description="Principal entity" Group="Model Properties" DataType="System.String" />
+    <Property Id="ProductVersion" Label="Product Version" Description="EF Core product version" Group="Model Properties" DataType="System.String" />
+    <Property Id="PropertyAccessMode" Group="Property Flags" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="To" Description="Source property" Group="Model Properties" DataType="System.String" />
+    <Property Id="Type" Description="CLR data type" Group="Model Properties" DataType="System.String" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueGenerated" Group="Property Flags" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="EntityType" ValueLabel="True">
+      <Condition Expression="HasCategory('EntityType')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Primary" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Primary')" />
+      <Setter Property="Background" Value="#FF008000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Optional" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Optional')" />
+      <Setter Property="Background" Value="#FF808040" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Foreign" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Foreign')" />
+      <Setter Property="Background" Value="#FF8080FF" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Property Required" ValueLabel="True">
+      <Condition Expression="HasCategory('Property Required')" />
+      <Setter Property="Background" Value="#FFC0A000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Navigation Property" ValueLabel="True">
+      <Condition Expression="HasCategory('Navigation Property')" />
+      <Setter Property="Background" Value="#FF990000" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Navigation Collection" ValueLabel="True">
+      <Condition Expression="HasCategory('Navigation Collection')" />
+      <Setter Property="Background" Value="#FFFF3232" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Model" ValueLabel="True">
+      <Condition Expression="HasCategory('Model')" />
+      <Setter Property="Background" Value="#FFFFFFFF" />
+    </Style>
+  </Styles>
+</DirectedGraph>

@@ -28,7 +28,7 @@ namespace AirVinyl.Tests
 
         protected override void ConfigureInMemoryDatabase(IServiceCollection services, bool bConfigureDb = true)
         {
-            base.ConfigureInMemoryDatabase(services, false);
+            base.ConfigureInMemoryDatabase(services, true);
         }
 
         [Fact]
@@ -55,6 +55,13 @@ namespace AirVinyl.Tests
         public async Task ODataPeople_RetunsOk()
         {
             var response = await _httpClient.GetAsync("/odata/people");
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            var responseStream = await _httpClient.GetStreamAsync("/odata/people");
+            var people = await JsonSerializer.DeserializeAsync<ExpectedPeopleModel>(responseStream);
+            people.Should().NotBeNull();
+            people!.value.Should().NotBeNull();
+            people!.value.Count.Should().BePositive();
+            stringResponse.Should().NotBe(String.Empty);
             response.EnsureSuccessStatusCode();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
@@ -158,6 +165,7 @@ namespace AirVinyl.Tests
             var stringResponse = await response.Content.ReadAsStringAsync();
             var responseStream = await _httpClient.GetStreamAsync("/odata/people(1)/VinylRecords");
             var vinylRecords = await JsonSerializer.DeserializeAsync<ExpectedVinylRecordCollectionModel>(responseStream);
+            stringResponse.Should().NotBe(String.Empty);
             vinylRecords.Should().NotBeNull();
             vinylRecords!.value.Should().NotBeNull();
             vinylRecords!.value.Count.Should().BePositive();

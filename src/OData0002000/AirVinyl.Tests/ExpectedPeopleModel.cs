@@ -30,6 +30,11 @@ namespace AirVinyl.Tests
         public ICollection<ExpectedVinylRecordModel> value { get; set; } = default!;
     }
 
+    public class ExpectedPeopleModel
+    {
+        public ICollection<ExpectedPersonModel> value { get; set; } = default!;
+    }
+
     public class ExpectedVinylRecordModel
     {
         public int VinylRecordId { get; set; }

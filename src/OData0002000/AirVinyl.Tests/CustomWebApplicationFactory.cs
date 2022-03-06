@@ -73,7 +73,7 @@ namespace AirVinyl.Tests
 
             var host = base.CreateHost(builder);
             //host.StopAsync().Wait();
-            SeedDatabase(host);
+            SeedDatabase(host, true);
             host.Start();
             return host;
         }
@@ -106,7 +106,7 @@ namespace AirVinyl.Tests
                 try
                 {
                     // Seed the database with test data.
-                    //SeedData.PopulateTestData(db);
+                    SeedData.PopulateTestData(db);
                 }
                 catch (Exception ex)
                 {
@@ -119,7 +119,7 @@ namespace AirVinyl.Tests
         protected virtual void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IMediator, NoOpMediator>();
-            ConfigureInMemoryDatabase(services);
+            ConfigureInMemoryDatabase(services, false);
         }
 
         /// <summary>
