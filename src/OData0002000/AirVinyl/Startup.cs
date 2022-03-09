@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace AirVinyl;
 
@@ -46,6 +47,12 @@ public class Startup
                      
             options.UseSqlite(@"Data Source=database.sqlite;");
         });
+
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "AirVinyl API", Version = "v1" });
+            c.EnableAnnotations();
+        });
     }
     public virtual void ConfigureContainer(ContainerBuilder builder)
     {
@@ -72,5 +79,13 @@ public class Startup
         {
             endpoints.MapControllers();
         });
+
+        app.UseSwagger();
+        // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+        app.UseSwaggerUI(c => {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "AirVinyl API V1");
+            c.RoutePrefix = "";
+        });
+
     }
 }

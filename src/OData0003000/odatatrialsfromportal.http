@@ -1,4 +1,5 @@
 @baseUrl = https://services.odata.org/V3/(S(vwnqy0wv2r0ovhyg1ru1uhqx))/OData/OData.svc
+## @baseUrl = https://services.odata.org/V3/Northwind/Northwind.svc/
 
 ### GET service Def
 GET {{baseUrl}} HTTP/1.1
