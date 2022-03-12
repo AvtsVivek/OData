@@ -37,7 +37,7 @@ public class Program
     }
 
     public static IHostBuilder CreateHostBuilder(string[] args,
-        AutofacServiceProviderFactory? autofacServiceProviderFactory = null)
+        AutofacServiceProviderFactory autofacServiceProviderFactory = null)
     {
         if (autofacServiceProviderFactory == null)
             autofacServiceProviderFactory = new AutofacServiceProviderFactory();
