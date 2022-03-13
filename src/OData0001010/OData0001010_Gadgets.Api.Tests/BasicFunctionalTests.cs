@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
@@ -41,15 +40,24 @@ namespace OData0001010_Gadgets.Api.Tests
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
-        //[Fact]
-        //public async Task ODataWithMetadata_RetunsOk()
-        //{
-        //    var response = await _httpClient.GetAsync("/odata/$metadata");
+        [Fact]
+        public async Task ODataWithMetadata_RetunsOk()
+        {
+            var url = "/gadget/odata/?$select=Id,ProductName,Cost,Brand,Type";
+            var response = await _httpClient.GetAsync(url);
+            var stringResponse = await response.Content.ReadAsStringAsync();
 
-        //    // I think both are not needed. One of the following should be suffecient.
-        //    response.EnsureSuccessStatusCode();
-        //    response.StatusCode.Should().Be(HttpStatusCode.OK);
-        //}
+            // I think both are not needed. One of the following should be suffecient.
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var responseStream = await _httpClient.GetStreamAsync(url);
+            var gadgets = await JsonSerializer.DeserializeAsync<List<ExpectedGadgetModel>>(responseStream);
+            gadgets.Should().NotBeNull();
+            gadgets!.Should().NotBeNull();
+            gadgets!.Count.Should().BePositive();
+            stringResponse.Should().NotBe(string.Empty);
+        }
 
         //[Fact]
         //public async Task ODataPeople_RetunsOk()

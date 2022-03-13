@@ -4,12 +4,20 @@
 ### So here, select, filter and order by capability are added.
 ### Also at the endpoint, we need to add the attribute [EnableQuery]
 
+@baseUrl = https://localhost:5001/gadget/odata/
+
+### GET service Def
+GET {{baseUrl}} HTTP/1.1
+
+### Get metatdata. Not sure why this is not working.
+GET {{baseUrl}}?$metadata HTTP/1.1
+
 ### Select Name
-GET https://localhost:5001/api/students?$select=name
+GET {{baseUrl}}?$select=ProductName,Cost HTTP/1.1
 Accept: application/json
 
 ### Select Name and id both
-GET https://localhost:5001/api/students?$select=name, Id
+GET https://localhost:5001/api/students?$select=ProductName, Id
 Accept: application/json
 
 ### Filter by name
