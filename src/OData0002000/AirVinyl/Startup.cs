@@ -44,7 +44,6 @@ public class Startup
         services.AddDbContext<AirVinylDbContext>(options =>
         {
             //options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AirVinylDemoDbNew;Trusted_Connection=True;");
-                     
             options.UseSqlite(@"Data Source=database.sqlite;");
         });
 
@@ -84,7 +83,7 @@ public class Startup
         // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
         app.UseSwaggerUI(c => {
             c.SwaggerEndpoint("/swagger/v1/swagger.json", "AirVinyl API V1");
-            c.RoutePrefix = "";
+            //c.RoutePrefix = "";
         });
 
     }

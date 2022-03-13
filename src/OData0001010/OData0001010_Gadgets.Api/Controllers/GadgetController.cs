@@ -12,8 +12,6 @@ namespace OData0001010_Gadgets.Api.Controllers
     {
         private readonly IGadgetsService _gadgetService;
 
-        //public GadgetController(IGadgetsService studentService) => this.studentService = studentService;
-
         private readonly OdataDbContext _odataDbContext;
         public GadgetController(OdataDbContext odataDbContext, IGadgetsService studentService)
         {

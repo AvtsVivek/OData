@@ -45,13 +45,8 @@ namespace OData0001010_Gadgets.Api
                 options.UseSqlite(@"Data Source=databaseodata.sqlite;");
             });
 
-            services.AddControllers().AddOData(options =>
-                options.Select().Filter().OrderBy().Expand());
-
-            services.AddControllers()
-                .AddOData(
-                options => options.Select().Filter().OrderBy().Expand()
-                );
+            services.AddControllers().AddOData(options => 
+                options.Select().Filter().OrderBy().Expand().SetMaxTop(100));
 
 
             services.AddTransient<IGadgetsService, GadgetsService>();
