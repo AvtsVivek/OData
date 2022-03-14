@@ -19,7 +19,7 @@ using Moq;
 namespace SimpleAirVinyl.Tests
 {
     public abstract class CustomWebApplicationFactory<TEntryPoint> : WebApplicationFactory<TEntryPoint>
-    where TEntryPoint : class
+where TEntryPoint : class
     {
         public ApplicationOptions ApplicationOptions { get; private set; } = default!;
 

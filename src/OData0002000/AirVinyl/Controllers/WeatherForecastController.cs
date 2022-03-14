@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SimpleAirVinyl.Controllers
+namespace AirVinyl.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -30,7 +30,6 @@ namespace SimpleAirVinyl.Controllers
             .ToArray();
         }
     }
-
     public class WeatherForecast
     {
         public DateTime Date { get; set; }

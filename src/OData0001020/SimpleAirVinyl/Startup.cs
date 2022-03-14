@@ -28,35 +28,28 @@ namespace SimpleAirVinyl
         {
 
             services.AddControllers()
-                //.AddOData(options => 
-                //    options.AddRouteComponents("odata", new SimpleAirVinylEntityDataModel().GetEntityDataModel())
-                //    .Select().Filter().OrderBy().Expand())
-                ;
-
-
-            //services.AddControllers().AddOData(opt =>
-            //            opt.AddRouteComponents("odata",
-            //                new AirVinylEntityDataModel().GetEntityDataModel()
-            //                //, batchHandler
-            //                )
-            //            .Select()
-            //            //.Expand()
-            //            //.OrderBy()
-            //            //.SetMaxTop(10)
-            //            //.Count()
-            //            //.Filter()
-            //            );
+                                .AddOData(opt =>
+                        opt.AddRouteComponents("odata",
+                            new AirVinylEntityDataModel().GetEntityDataModel()
+                            //, batchHandler
+                            )
+                        .Select()
+                        //.Expand()
+                        //.OrderBy()
+                        //.SetMaxTop(10)
+                        //.Count()
+                        //.Filter()
+                        );
 
             services.AddDbContext<AirVinylDbContext>(options =>
             {
                 //options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AirVinylDemoDbNew;Trusted_Connection=True;");
-
                 options.UseSqlite(@"Data Source=database.sqlite;");
             });
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Simple AirVinyl API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AirVinyl API", Version = "v1" });
                 c.EnableAnnotations();
             });
         }
@@ -89,9 +82,11 @@ namespace SimpleAirVinyl
             app.UseSwagger();
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SimpleAirVinyl API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "AirVinyl API V1");
                 //c.RoutePrefix = "";
             });
+
         }
     }
+
 }

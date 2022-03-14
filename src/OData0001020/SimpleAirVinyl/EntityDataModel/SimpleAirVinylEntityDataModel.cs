@@ -4,16 +4,17 @@ using SimpleAirVinyl.Entities;
 
 namespace SimpleAirVinyl.EntityDataModel
 {
-    public class SimpleAirVinylEntityDataModel
+    public class AirVinylEntityDataModel
     {
         public IEdmModel GetEntityDataModel()
         {
             var builder = new ODataConventionModelBuilder();
 
-            builder.Namespace = "SimpleAirVinyl";
+            builder.Namespace = "AirVinyl";
             builder.ContainerName = "AirVinylContainer";
 
             builder.EntitySet<Person>("People");
+            builder.EntitySet<VinylRecord>("VinylRecords");
 
             return builder.GetEdmModel();
         }
