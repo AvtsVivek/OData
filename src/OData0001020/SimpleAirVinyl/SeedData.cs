@@ -380,8 +380,8 @@ namespace SimpleAirVinyl
 
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var dbContext = new SimpleAirVinylDbContext(
-                serviceProvider.GetRequiredService<DbContextOptions<SimpleAirVinylDbContext>>()))
+            using (var dbContext = new AirVinylDbContext(
+                serviceProvider.GetRequiredService<DbContextOptions<AirVinylDbContext>>()))
             {
                 if (dbContext.People.Any())
                 {
@@ -401,7 +401,7 @@ namespace SimpleAirVinyl
             }
         }
 
-        public static void PopulateTestData(SimpleAirVinylDbContext dbContext)
+        public static void PopulateTestData(AirVinylDbContext dbContext)
         {
             GetAddressList().ForEach(address => dbContext.Add(address));
             GetPersonList().ForEach(person => dbContext.Add(person));

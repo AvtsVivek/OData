@@ -1,4 +1,4 @@
-﻿using AirVinyl.Entities;
+﻿using SimpleAirVinyl.Entities;
 using System;
 using System.Collections.Generic;
 

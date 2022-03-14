@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using SimpleAirVinyl.EntityDataModel;
 
 namespace SimpleAirVinyl
 {
@@ -26,7 +27,11 @@ namespace SimpleAirVinyl
         public virtual void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers().AddOData(options => options.Select().Filter().OrderBy().Expand());
+            services.AddControllers()
+                //.AddOData(options => 
+                //    options.AddRouteComponents("odata", new SimpleAirVinylEntityDataModel().GetEntityDataModel())
+                //    .Select().Filter().OrderBy().Expand())
+                ;
 
 
             //services.AddControllers().AddOData(opt =>
@@ -42,7 +47,7 @@ namespace SimpleAirVinyl
             //            //.Filter()
             //            );
 
-            services.AddDbContext<SimpleAirVinylDbContext>(options =>
+            services.AddDbContext<AirVinylDbContext>(options =>
             {
                 //options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AirVinylDemoDbNew;Trusted_Connection=True;");
 

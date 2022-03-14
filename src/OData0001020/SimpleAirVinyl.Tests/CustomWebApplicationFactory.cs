@@ -94,7 +94,7 @@ namespace SimpleAirVinyl.Tests
             using (var scope = serviceProvider.CreateScope())
             {
                 var scopedServices = scope.ServiceProvider;
-                var db = scopedServices.GetRequiredService<SimpleAirVinylDbContext>();
+                var db = scopedServices.GetRequiredService<AirVinylDbContext>();
 
                 var logger = scopedServices
                     .GetRequiredService<ILogger<CustomWebApplicationFactory<TEntryPoint>>>();
@@ -133,7 +133,7 @@ namespace SimpleAirVinyl.Tests
 
             // Remove the app's ApplicationDbContext registration.
             var descriptor = services.SingleOrDefault(
-              d => d.ServiceType == typeof(DbContextOptions<SimpleAirVinylDbContext>));
+              d => d.ServiceType == typeof(DbContextOptions<AirVinylDbContext>));
 
             if (descriptor != null)
             {
@@ -144,7 +144,7 @@ namespace SimpleAirVinyl.Tests
             var inMemoryCollectionName = Guid.NewGuid().ToString();
 
             // Add ApplicationDbContext using an in-memory database for testing.
-            services.AddDbContext<SimpleAirVinylDbContext>(options =>
+            services.AddDbContext<AirVinylDbContext>(options =>
             {
                 options.UseInMemoryDatabase(inMemoryCollectionName);
                 options.EnableSensitiveDataLogging();

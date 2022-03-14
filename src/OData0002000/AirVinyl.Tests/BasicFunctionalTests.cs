@@ -52,6 +52,21 @@ namespace AirVinyl.Tests
         }
 
         [Fact]
+        public async Task Weatherforecast_RetunsOk()
+        {
+            var response = await _httpClient.GetAsync("/WeatherForecast");
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            var responseStream = await _httpClient.GetStreamAsync("/WeatherForecast");
+            //var people = await JsonSerializer.DeserializeAsync<ExpectedPeopleModel>(responseStream);
+            //people.Should().NotBeNull();
+            //people!.value.Should().NotBeNull();
+            //people!.value.Count.Should().BePositive();
+            stringResponse.Should().NotBe(string.Empty);
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
         public async Task ODataPeople_RetunsOk()
         {
             var response = await _httpClient.GetAsync("/odata/people");

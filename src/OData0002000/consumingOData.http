@@ -2,6 +2,9 @@
 ### services.AddOData(options => 
 ###    options.Select().Filter().OrderBy().Expand());
 
+GET https://localhost:5001/WeatherForecast
+Accept: application/json
+
 ### odata
 GET https://localhost:5001/odata
 Accept: application/json

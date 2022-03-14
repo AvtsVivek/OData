@@ -42,11 +42,46 @@ namespace SimpleAirVinyl.Tests
         }
 
         [Fact]
+        public async Task SwaggerUi_RetunsOk()
+        {
+            var response = await _httpClient.GetAsync("/swagger/index.html");
+
+            // I think both are not needed. One of the following should be suffecient.
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task SwaggerJson_RetunsOk()
+        {
+            var response = await _httpClient.GetAsync("/swagger/v1/swagger.json");
+
+            // I think both are not needed. One of the following should be suffecient.
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
         public async Task ODataWithMetadata_RetunsOk()
         {
             var response = await _httpClient.GetAsync("/odata/$metadata");
 
             // I think both are not needed. One of the following should be suffecient.
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task Weatherforecast_RetunsOk()
+        {
+            var response = await _httpClient.GetAsync("/WeatherForecast");
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            var responseStream = await _httpClient.GetStreamAsync("/WeatherForecast");
+            //var people = await JsonSerializer.DeserializeAsync<ExpectedPeopleModel>(responseStream);
+            //people.Should().NotBeNull();
+            //people!.value.Should().NotBeNull();
+            //people!.value.Count.Should().BePositive();
+            stringResponse.Should().NotBe(string.Empty);
             response.EnsureSuccessStatusCode();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }

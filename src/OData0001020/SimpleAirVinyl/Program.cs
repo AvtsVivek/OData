@@ -13,7 +13,7 @@ namespace SimpleAirVinyl
 
                 try
                 {
-                    var context = services.GetRequiredService<SimpleAirVinylDbContext>();
+                    var context = services.GetRequiredService<AirVinylDbContext>();
                     // context.Database.Migrate();
                     context.Database.EnsureCreated();
                     SeedData.Initialize(services);

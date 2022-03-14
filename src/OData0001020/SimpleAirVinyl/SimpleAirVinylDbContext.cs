@@ -6,14 +6,14 @@ using System.Text.Json;
 
 namespace SimpleAirVinyl
 {
-    public class SimpleAirVinylDbContext : DbContext
+    public class AirVinylDbContext : DbContext
     {
         public DbSet<Person> People { get; set; } = default!;
         public DbSet<VinylRecord> VinylRecords { get; set; } = default!;
         public DbSet<RecordStore> RecordStores { get; set; } = default!;
         public DbSet<PressingDetail> PressingDetails { get; set; } = default!;
 
-        public SimpleAirVinylDbContext(DbContextOptions<SimpleAirVinylDbContext> options)
+        public AirVinylDbContext(DbContextOptions<AirVinylDbContext> options)
            : base(options)
         {
         }

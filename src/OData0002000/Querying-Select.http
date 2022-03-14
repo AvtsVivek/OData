@@ -1,3 +1,8 @@
+### odata people 
+GET https://localhost:5001/odata/People HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
 ### odata people with just email
 GET https://localhost:5001/odata/People?$select=Email HTTP/1.1
 Accept: application/json
