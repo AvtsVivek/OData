@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/OData6Demo.Api/OData6Demo.Api.csproj",
+                "${workspaceFolder}/OData0001010_Gadgets.Api/OData0001010_Gadgets.Api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/OData6Demo.Api/OData6Demo.Api.csproj",
+                "${workspaceFolder}/OData0001010_Gadgets.Api/OData0001010_Gadgets.Api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/OData6Demo.Api/OData6Demo.Api.csproj"
+                "${workspaceFolder}/OData0001010_Gadgets.Api/OData0001010_Gadgets.Api.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

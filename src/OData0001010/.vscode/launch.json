@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/OData6Demo.Api/bin/Debug/net6.0/OData6Demo.Api.dll",
+            "program": "${workspaceFolder}/OData0001010_Gadgets.Api/bin/Debug/net6.0/OData0001010_Gadgets.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/OData6Demo.Api",
+            "cwd": "${workspaceFolder}/OData0001010_Gadgets.Api",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
