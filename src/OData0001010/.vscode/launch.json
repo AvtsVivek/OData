@@ -20,14 +20,6 @@
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
                 "uriFormat": "%s/swagger"
             },
-            "launchBrowser": {
-                "enabled": true,
-                "args": "${auto-detect-url}/swagger",
-                "windows": {
-                  "command": "cmd.exe",
-                  "args": "/C start ${auto-detect-url}/swagger"
-                }
-            },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
