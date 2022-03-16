@@ -16,6 +16,7 @@ namespace OData0001010_Gadgets.Api.Tests
     {
         private readonly HttpClient _httpClient;
         private readonly MediaTypeFormatterCollection formatters;
+        private readonly string _baseUrl = "/gadget/get/";
 
         public BasicFunctionalTests()
         {
@@ -33,7 +34,7 @@ namespace OData0001010_Gadgets.Api.Tests
         [Fact]
         public async Task OData_RetunsOk()
         {
-            var response = await _httpClient.GetAsync("/gadget/odata");
+            var response = await _httpClient.GetAsync(_baseUrl);
 
             // I think both are not needed. One of the following should be suffecient.
             response.EnsureSuccessStatusCode();
@@ -43,7 +44,7 @@ namespace OData0001010_Gadgets.Api.Tests
         [Fact]
         public async Task ODataWithMetadata_RetunsOk()
         {
-            var url = "/gadget/odata/?$select=Id,ProductName,Cost,Brand,Type";
+            var url = $"{_baseUrl}?$select=Id,ProductName,Cost,Brand,Type";
             var response = await _httpClient.GetAsync(url);
             var stringResponse = await response.Content.ReadAsStringAsync();
 
@@ -62,7 +63,7 @@ namespace OData0001010_Gadgets.Api.Tests
         [Fact]
         public async Task Filter_RetunsOk()
         {
-            var url = "/gadget/odata/?$filter=ProductName eq 'Pen Drive'";
+            var url = $"{_baseUrl}?$filter=ProductName eq 'Pen Drive'";
             var response = await _httpClient.GetAsync(url);
             var stringResponse = await response.Content.ReadAsStringAsync();
 
@@ -81,7 +82,7 @@ namespace OData0001010_Gadgets.Api.Tests
         [Fact]
         public async Task OrderById_RetunsOk()
         {
-            var url = "/gadget/odata/?$orderby=Id desc";
+            var url = $"{_baseUrl}?$orderby=Id desc";
             var response = await _httpClient.GetAsync(url);
             var stringResponse = await response.Content.ReadAsStringAsync();
 
@@ -101,7 +102,7 @@ namespace OData0001010_Gadgets.Api.Tests
         [Fact]
         public async Task Top_RetunsOk()
         {
-            var url = "/gadget/odata/?$top=2";
+            var url = $"{_baseUrl}?$top=2";
             var response = await _httpClient.GetAsync(url);
             var stringResponse = await response.Content.ReadAsStringAsync();
 

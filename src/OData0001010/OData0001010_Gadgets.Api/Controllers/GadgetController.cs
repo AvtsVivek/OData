@@ -20,7 +20,7 @@ namespace OData0001010_Gadgets.Api.Controllers
         }
 
 
-        [HttpGet("odata")]
+        [HttpGet("get")]
         [EnableQuery]
         public ActionResult<IQueryable<Gadgets>> Get()
         {

@@ -1,0 +1,10 @@
+@baseUrl = https://localhost:5001/odata
+
+### GET service Def
+GET {{baseUrl}} HTTP/1.1
+
+### GET service Def
+GET {{baseUrl}}/$metadata HTTP/1.1
+
+### Get metatdata. Not sure why this is not working. We need to add edm for this to work.
+GET {{baseUrl}}#Gadgetds HTTP/1.1

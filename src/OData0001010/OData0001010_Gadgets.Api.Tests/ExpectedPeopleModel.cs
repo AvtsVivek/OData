@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace OData0001010_Gadgets.Api.Tests
+﻿namespace OData0001010_Gadgets.Api.Tests
 {
     public class ExpectedGadgetModel
     {

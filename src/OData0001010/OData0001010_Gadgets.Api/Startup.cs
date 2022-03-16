@@ -1,20 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using OData0001010_Gadgets.Api.Services;
 using Autofac;
+using Microsoft.OData.Edm;
+using Microsoft.OData.ModelBuilder;
+using OData0001010_Gadgets.Api.Models;
 
 namespace OData0001010_Gadgets.Api
 {
@@ -46,7 +42,9 @@ namespace OData0001010_Gadgets.Api
             });
 
             services.AddControllers().AddOData(options => 
-                options.Select().Filter().OrderBy().Expand().SetMaxTop(100));
+                options
+                .AddRouteComponents("odata", GetEntityDataModel())
+                .Select().Filter().OrderBy().Expand().SetMaxTop(100));
 
 
             services.AddTransient<IGadgetsService, GadgetsService>();
@@ -76,6 +74,18 @@ namespace OData0001010_Gadgets.Api
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public IEdmModel GetEntityDataModel()
+        {
+            var builder = new ODataConventionModelBuilder();
+
+            builder.Namespace = "Gadgets";
+            builder.ContainerName = "GadgetsContainer";
+
+            builder.EntitySet<Gadgets>("Gadgets");
+
+            return builder.GetEdmModel();
         }
     }
 }

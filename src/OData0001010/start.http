@@ -9,41 +9,33 @@
 ### GET service Def
 GET {{baseUrl}} HTTP/1.1
 
-### Get metatdata. Not sure why this is not working.
+### Get metatdata. Not sure why this is not working. We need to add edm for this to work.
 GET {{baseUrl}}?$metadata HTTP/1.1
 
 ### Select Name and cost
 GET {{baseUrl}}?$select=ProductName,Cost HTTP/1.1
 Accept: application/json
 
-### Select Name and id both
-GET https://localhost:5001/api/students?$select=ProductName, Id
+### Filter by product name
+GET {{baseUrl}}?$filter=ProductName eq 'Pen Drive'
 Accept: application/json
 
-### Filter by name
-GET https://localhost:5001/api/students?$filter=name eq 'Vishu Goli'
+### Filter by cost
+GET {{baseUrl}}?$filter=cost gt 900
 Accept: application/json
 
-### Filter by score
-GET https://localhost:5001/api/students?$filter=score lt 165
+### Filter by name starting with Head
+GET {{baseUrl}}?$filter=Startswith(ProductName, 'Head')
 Accept: application/json
 
-### Filter by score again
-GET https://localhost:5001/api/students?$filter=score gt 165
-Accept: application/json
-
-### Filter by name starting with S
-GET https://localhost:5001/api/students?$filter=Startswith(Name, 'S')
-Accept: application/json
-
-### Filter by name in 
-GET https://localhost:5001/api/students?$filter=Name in ('Sean Hobbs', 'Vishu Goli')
+### Filter by Product name in 
+GET {{baseUrl}}?$filter=ProductName in ('Pen Drive', 'Head Phone')
 Accept: application/json
 
 ### Order by 
-GET https://localhost:5001/api/students?$orderby=Name
+GET {{baseUrl}}?$orderby=ProductName
 Accept: application/json
 
 ### Order by desc
-GET https://localhost:5001/api/students?$orderby=Name desc
+GET {{baseUrl}}?$orderby=ProductName desc
 Accept: application/json

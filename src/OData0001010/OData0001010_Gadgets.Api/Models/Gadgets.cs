@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OData0001010_Gadgets.Api.Models
+﻿namespace OData0001010_Gadgets.Api.Models
 {
     public class Gadgets
     {
