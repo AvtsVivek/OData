@@ -1,6 +1,6 @@
 ﻿namespace OData0001010_Gadgets.Api.Models
 {
-    public class Gadgets
+    public class Product
     {
         public int Id { get; set; }
         public string ProductName { get; set; }

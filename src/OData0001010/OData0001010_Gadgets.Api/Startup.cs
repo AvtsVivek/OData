@@ -83,7 +83,7 @@ namespace OData0001010_Gadgets.Api
             builder.Namespace = "Gadgets";
             builder.ContainerName = "GadgetsContainer";
 
-            builder.EntitySet<Gadgets>("Gadgets");
+            builder.EntitySet<Product>("Gadgets");
 
             return builder.GetEdmModel();
         }

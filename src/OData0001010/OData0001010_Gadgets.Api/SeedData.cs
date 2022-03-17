@@ -39,11 +39,11 @@ namespace OData0001010_Gadgets.Api
             dbContext.SaveChanges();
         }
 
-        public static List<Gadgets> GetRecordStoreList()
+        public static List<Product> GetRecordStoreList()
         {
-            return new List<Gadgets>
+            return new List<Product>
             {
-                new Gadgets()
+                new Product()
                 {
                     Id = 1,
                     ProductName = "Pen Drive",
@@ -51,7 +51,7 @@ namespace OData0001010_Gadgets.Api
                     Cost = 600,
                     Type = "Accessories"
                 },
-                new Gadgets()
+                new Product()
                 {
                     Id = 2,
                     ProductName = "Head Phone",
@@ -59,7 +59,7 @@ namespace OData0001010_Gadgets.Api
                     Cost = 3000,
                     Type = "Computer Accessories"
                 },
-                new Gadgets()
+                new Product()
                 {
                     Id = 3,
                     ProductName = "Key board",

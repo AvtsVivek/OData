@@ -29,8 +29,26 @@ namespace OData6Demo.Api.Services
                     Id = Guid.NewGuid(),
                     Name = "Sean Hobbs",
                     Score = 170
+                },
+                new Student
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Vivek Koppula",
+                    Score = 150
+                },
+                new Student
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Aarogya",
+                    Score = 120
+                },
+                new Student
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Aakash",
+                    Score = 220
                 }
-            }.AsQueryable(); ;
+            }.AsQueryable();
         }
     }
 }

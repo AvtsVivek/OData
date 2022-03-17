@@ -5,6 +5,6 @@ namespace OData0001010_Gadgets.Api.Services
 {
     public interface IGadgetsService
     {
-        IQueryable<Gadgets> RetrieveAllGadgets();
+        IQueryable<Product> RetrieveAllGadgets();
     }
 }

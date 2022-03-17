@@ -22,9 +22,9 @@ namespace OData0001010_Gadgets.Api.Controllers
 
         [HttpGet("get")]
         [EnableQuery]
-        public ActionResult<IQueryable<Gadgets>> Get()
+        public ActionResult<IQueryable<Product>> Get()
         {
-            IQueryable<Gadgets> retrievedGadgets = _gadgetService.RetrieveAllGadgets();
+            IQueryable<Product> retrievedGadgets = _gadgetService.RetrieveAllGadgets();
 
             //IQueryable<Gadgets> retrievedGadgets = _odataDbContext.Gadgets.AsQueryable();
 

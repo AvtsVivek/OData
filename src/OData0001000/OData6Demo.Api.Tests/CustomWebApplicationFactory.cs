@@ -15,8 +15,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Moq;
+using OData6Demo.Api;
 
-namespace OData0001010_Gadgets.Api.Tests
+namespace OData6Demo.Api.Tests
 {
     public abstract class CustomWebApplicationFactory<TEntryPoint> : WebApplicationFactory<TEntryPoint>
     where TEntryPoint : class
@@ -62,7 +63,7 @@ namespace OData0001010_Gadgets.Api.Tests
         {
             builder
                 .UseEnvironment(RunningEnvironmentName.Test)
-                .ConfigureServices(ConfigureServices);
+                ;
         }
         protected override IHost CreateHost(IHostBuilder builder)
         {
@@ -71,84 +72,15 @@ namespace OData0001010_Gadgets.Api.Tests
             builder.UseContentRoot(currentDirectory);
 
             var host = base.CreateHost(builder);
-            //host.StopAsync().Wait();
-            SeedDatabase(host, true);
             host.Start();
             return host;
         }
 
-        /// <summary>
-        /// In most integration tests, we have to setup the data
-        /// </summary>
-        /// <param name="host">The host object from which the services will be retrieved.</param>
-        /// <param name="bSeedDatabase">True if you want to seed the dabase with some seed data</param>
-        protected virtual void SeedDatabase(IHost host, bool bSeedDatabase = false)
-        {
-            if (!bSeedDatabase)
-                return; // Dont need to seed the database. Simply return.
-                        // Get service provider.
-            var serviceProvider = host.Services;
-
-            // Create a scope to obtain a reference to the database
-            // context (AppDbContext).
-            using (var scope = serviceProvider.CreateScope())
-            {
-                var scopedServices = scope.ServiceProvider;
-                var db = scopedServices.GetRequiredService<OdataDbContext>();
-
-                var logger = scopedServices
-                    .GetRequiredService<ILogger<CustomWebApplicationFactory<TEntryPoint>>>();
-
-                // Ensure the database is created.
-                db.Database.EnsureDeleted();
-                db.Database.EnsureCreated();
-                try
-                {
-                    // Seed the database with test data.
-                    SeedData.PopulateTestData(db);
-                }
-                catch (Exception ex)
-                {
-                    logger.LogError(ex, "An error occurred seeding the " +
-                                        $"database with test messages. Error: {ex.Message}");
-                }
-            }
-        }
 
         protected virtual void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IMediator, NoOpMediator>();
-            ConfigureInMemoryDatabase(services, false);
-        }
-
-        /// <summary>
-        /// In most cases we need inmemory database.
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="bConfigureDb"></param>
-        protected virtual void ConfigureInMemoryDatabase(IServiceCollection services, bool bConfigureDb = true)
-        {
-            if (!bConfigureDb)
-                return; // Simply return, we dont need to configure the in mem db.
-
-            // Remove the app's ApplicationDbContext registration.
-            var descriptor = services.SingleOrDefault(
-              d => d.ServiceType == typeof(DbContextOptions<OdataDbContext>));
-
-            if (descriptor != null)
-            {
-                services.Remove(descriptor);
-            }
-
-            // This should be set for each individual test run
-            var inMemoryCollectionName = Guid.NewGuid().ToString();
-
-            // Add ApplicationDbContext using an in-memory database for testing.
-            services.AddDbContext<OdataDbContext>(options =>
-            {
-                options.UseInMemoryDatabase(inMemoryCollectionName);
-                options.EnableSensitiveDataLogging();
-            });
+            // services.AddScoped<IMediator, NoOpMediator>();
+            // ConfigureInMemoryDatabase(services, false);
         }
 
         protected override IEnumerable<Assembly> GetTestAssemblies()

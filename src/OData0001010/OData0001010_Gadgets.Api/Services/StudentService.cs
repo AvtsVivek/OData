@@ -12,7 +12,7 @@ namespace OData0001010_Gadgets.Api.Services
             _odataDbContext = odataDbContext;
         }
 
-        public IQueryable<Gadgets> RetrieveAllGadgets()
+        public IQueryable<Product> RetrieveAllGadgets()
         {
             return _odataDbContext.Gadgets.AsQueryable();
         }

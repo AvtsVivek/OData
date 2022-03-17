@@ -11,7 +11,7 @@ namespace OData0001010_Gadgets.Api
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
+            var host = CreateHostBuilder<Startup>(args).Build();
 
             using (var scope = host.Services.CreateScope())
             {
@@ -33,8 +33,8 @@ namespace OData0001010_Gadgets.Api
             host.Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args,
-            AutofacServiceProviderFactory autofacServiceProviderFactory = null)
+        public static IHostBuilder CreateHostBuilder<TStartup>(string[] args,
+            AutofacServiceProviderFactory autofacServiceProviderFactory = null) where TStartup : class
         {
             if (autofacServiceProviderFactory == null)
                 autofacServiceProviderFactory = new AutofacServiceProviderFactory();
@@ -42,7 +42,13 @@ namespace OData0001010_Gadgets.Api
                 .UseServiceProviderFactory(autofacServiceProviderFactory)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<TStartup>()
+                    .ConfigureLogging(logging =>
+                    {
+                        logging.ClearProviders();
+                        logging.AddConsole();
+                        // logging.AddAzureWebAppDiagnostics(); add this if deploying to Azure
+                    });
                 });
             return hostBuilder;
         }

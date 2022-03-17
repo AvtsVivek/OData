@@ -13,7 +13,7 @@ namespace OData0001010_Gadgets.Api
         {
 
         }
-        public DbSet<Gadgets> Gadgets { get; set; }
+        public DbSet<Product> Gadgets { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
