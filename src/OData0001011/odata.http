@@ -1,0 +1,48 @@
+@baseUrl = https://localhost:5001/odata
+
+### GET service Def
+GET {{baseUrl}} HTTP/1.1
+
+### GET service Def
+GET {{baseUrl}}/$metadata HTTP/1.1
+
+### Get metatdata. Not sure what #Gadgets means here.
+GET {{baseUrl}}#Gadgets HTTP/1.1
+
+@odataGadgetsUrl = https://localhost:5001/odata/GadgetsOdata/
+### Count
+GET {{odataGadgetsUrl}}$count
+
+### Count
+GET {{odataGadgetsUrl}}?$count=true
+
+### Select along with count 
+GET {{odataGadgetsUrl}}?$select=ProductName,Cost&$count=true
+
+### Just select 
+GET {{odataGadgetsUrl}}?$select=ProductName,Cost
+
+### Filter by product name and count
+GET {{odataGadgetsUrl}}?$filter=ProductName eq 'Pen Drive'&$count=true
+Accept: application/json
+
+### Filter by cost
+GET {{odataGadgetsUrl}}?$filter=cost gt 900&$count=true
+Accept: application/json
+
+### Filter by name starting with Head
+GET {{odataGadgetsUrl}}?$filter=Startswith(ProductName, 'Head')&$count=true
+Accept: application/json
+
+### Filter by Product name in 
+GET {{odataGadgetsUrl}}?$filter=ProductName in ('Pen Drive', 'Head Phone')&$count=true
+Accept: application/json
+
+### Order by 
+GET {{odataGadgetsUrl}}?$orderby=ProductName&$count=true
+Accept: application/json
+
+### Order by desc
+GET {{odataGadgetsUrl}}?$orderby=ProductName desc&$count=true
+Accept: application/json
+

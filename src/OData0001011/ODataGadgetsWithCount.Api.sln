@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31423.177
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7717BF30-1682-4ACC-9F46-85137A9B9F65}"
+	ProjectSection(SolutionItems) = preProject
+		odata.http = odata.http
+		ReadMe.md = ReadMe.md
+		start.http = start.http
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ODataGadgetsWithCount.Api", "ODataGadgetsWithCount.Api\ODataGadgetsWithCount.Api.csproj", "{337443E0-B8E6-4C3D-A79D-DB2C830B2A07}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ODataGadgetsWithCount.Api.Tests", "ODataGadgetsWithCount.Api.Tests\ODataGadgetsWithCount.Api.Tests.csproj", "{FC2432D5-65EE-49B7-AF1C-0F4573B9DAFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{337443E0-B8E6-4C3D-A79D-DB2C830B2A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337443E0-B8E6-4C3D-A79D-DB2C830B2A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337443E0-B8E6-4C3D-A79D-DB2C830B2A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337443E0-B8E6-4C3D-A79D-DB2C830B2A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC2432D5-65EE-49B7-AF1C-0F4573B9DAFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC2432D5-65EE-49B7-AF1C-0F4573B9DAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC2432D5-65EE-49B7-AF1C-0F4573B9DAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC2432D5-65EE-49B7-AF1C-0F4573B9DAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {595752F0-3D48-432D-A08F-9B1BE957D80E}
+	EndGlobalSection
+EndGlobal
