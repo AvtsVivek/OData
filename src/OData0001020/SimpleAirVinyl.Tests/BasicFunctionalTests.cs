@@ -104,7 +104,11 @@ namespace SimpleAirVinyl.Tests
         [Fact]
         public async Task ODataPeopleMetadata_RetunsOk()
         {
-            var response = await _httpClient.GetAsync("/odata/$metadata#People");
+            var peopleMetaDataOdataEndpoint = "/odata/$metadata#People";
+            var response = await _httpClient.GetAsync(peopleMetaDataOdataEndpoint);
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            var responseStream = await _httpClient.GetStreamAsync(peopleMetaDataOdataEndpoint);
+
             response.EnsureSuccessStatusCode();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
@@ -120,21 +124,27 @@ namespace SimpleAirVinyl.Tests
         [Fact]
         public async Task MetadataVinylRecords_RetunsOk()
         {
-            var response = await _httpClient.GetAsync("/odata/$metadata#VinylRecords");
+            var vinaylRecordsMetaDataOdataEndpoint = "/odata/$metadata#VinylRecords";
+            var response = await _httpClient.GetAsync(vinaylRecordsMetaDataOdataEndpoint);
             response.EnsureSuccessStatusCode();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var stringResponse = await response.Content.ReadAsStringAsync();
+            var responseStream = await _httpClient.GetStreamAsync(vinaylRecordsMetaDataOdataEndpoint);
+
         }
 
         [Fact]
         public async Task SpecificPerson_RetunsOk()
         {
+            // This test is failing. Not sure why.
             var response = await _httpClient.GetAsync("/odata/people(1)");
+            response.EnsureSuccessStatusCode();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
             var responseStream = await _httpClient.GetStreamAsync("/odata/people(1)");
             var person = await JsonSerializer.DeserializeAsync<ExpectedPersonModel>(responseStream);
             person.Should().NotBeNull();
             person!.PersonId.Should().BePositive();
-            response.EnsureSuccessStatusCode();
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
         }
 
         [Fact]

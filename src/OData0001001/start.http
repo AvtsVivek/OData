@@ -1,0 +1,51 @@
+### In Startup.cs, ensure the following configured.
+### services.AddOData(options => 
+###    options.Select().Filter().OrderBy().Expand());
+### So here, select, filter and order by capability are added.
+### Also at the endpoint, we need to add the attribute [EnableQuery]
+
+@baseUrl = https://localhost:5001/api
+@baseUrlWithPeople = https://localhost:5001/api/people
+
+### GET service Def
+GET {{baseUrlWithPeople}} HTTP/1.1
+
+
+### Select Name
+GET {{baseUrlWithPeople}}?$select=name
+Accept: application/json
+
+### Select Name and id both
+GET {{baseUrlWithPeople}}?$select=name, Id
+Accept: application/json
+
+### Filter by name
+GET {{baseUrlWithPeople}}?$filter=name eq 'Vishu Goli'
+Accept: application/json
+
+### Filter by score
+GET {{baseUrlWithPeople}}?$filter=score lt 165
+Accept: application/json
+
+### Filter by score again
+GET {{baseUrlWithPeople}}?$filter=score gt 165
+Accept: application/json
+
+### Filter by name starting with S
+GET {{baseUrlWithPeople}}?$filter=Startswith(Name, 'S')
+Accept: application/json
+
+### Filter by name in 
+GET {{baseUrlWithPeople}}?$filter=Name in ('Sean Hobbs', 'Vishu Goli')
+Accept: application/json
+
+### Order by 
+GET {{baseUrlWithPeople}}?$orderby=Name
+Accept: application/json
+
+### Order by desc
+GET {{baseUrlWithPeople}}?$orderby=Name desc
+Accept: application/json
+
+### Expand
+GET {{baseUrlWithPeople}}/person?$expand=BankAccounts($select=Id, BankName)

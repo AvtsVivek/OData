@@ -1,4 +1,17 @@
 
+@baseUrl = https://localhost:7284/odata/
 
-@baseUrl = https://localhost:5001/gadget/odata/
+### GET service Def
+GET {{baseUrl}} HTTP/1.1
+
+### Get metatdata. Not sure why this is not working. We need to add edm for this to work.
+GET {{baseUrl}}$metadata/ HTTP/1.1
+
+### Select Name and cost
+GET {{baseUrl}}people HTTP/1.1
+Accept: application/json
+
+### Expand with Vianal Records
+GET {{baseUrl}}people?$expand=VinalRecords($select=VinylRecordId) HTTP/1.1
+Accept: application/json
 

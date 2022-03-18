@@ -15,10 +15,9 @@ namespace SimpleAirVinyl.Controllers
         }
 
         [EnableQuery]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
-            return Ok(await _simpleAirVinylDbContext.People.ToListAsync());
+            return Ok(_simpleAirVinylDbContext.People);
         }
-
     }
 }

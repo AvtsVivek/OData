@@ -26,7 +26,6 @@ namespace SimpleAirVinyl
         // This method gets called by the runtime. Use this method to add services to the container.
         public virtual void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers()
                                 .AddOData(opt =>
                         opt.AddRouteComponents("odata",
@@ -39,8 +38,10 @@ namespace SimpleAirVinyl
                         //.SetMaxTop(10)
                         //.Count()
                         //.Filter()
-                        );
+                        )
+                                ;
 
+            
             services.AddDbContext<AirVinylDbContext>(options =>
             {
                 //options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AirVinylDemoDbNew;Trusted_Connection=True;");
