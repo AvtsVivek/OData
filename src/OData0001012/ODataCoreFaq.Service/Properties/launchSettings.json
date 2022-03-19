@@ -1,11 +1,12 @@
-﻿{
+{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:54581",
-      "sslPort": 44382
+      "applicationUrl": "http://localhost:54588",
+      "sslPort": 44388
+
     }
   },
   "profiles": {
@@ -17,7 +18,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Gadgets.Api": {
+    "ODataCoreFaq.Service": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

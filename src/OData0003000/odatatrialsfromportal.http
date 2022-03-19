@@ -8,6 +8,7 @@ GET {{baseUrl}} HTTP/1.1
 GET {{baseUrl}}/$metadata HTTP/1.1
 
 ### Get metatdata. Trying to get the format in json. This does not work
+### We cannot get metadata in json format.
 GET {{baseUrl}}/$metadata&$format=json HTTP/1.1
 
 ### GET service Def in xml format, default
