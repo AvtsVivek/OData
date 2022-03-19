@@ -20,6 +20,8 @@ namespace ODataCoreFaq.Service
 
         public DbSet<OrderHeader> Orders => Set<OrderHeader>();
 
+        public DbSet<OrderHeader> OrderHeaders => Set<OrderHeader>();
+
         public DbSet<OrderDetail> OrderDetails => Set<OrderDetail>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -40,6 +42,20 @@ namespace ODataCoreFaq.Service
             .EnableDetailedErrors();
 
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Customer>().Ignore(customer => customer.OrderHeaders);
+
+            //modelBuilder.Entity<Customer>(customer => customer.HasMany(typeof(OrderHeader), "OrderHeaders")
+            //    .WithOne(nameof(Customer)));
+
+            //modelBuilder.Entity<Customer>(customer => customer.HasMany(typeof(OrderHeader), "Orders")
+            //   .WithOne(nameof(Customer)));
+
         }
     }
 
@@ -103,7 +119,9 @@ namespace ODataCoreFaq.Service
                     OrderDate = new DateTimeOffset(new DateTime(2021, rand.Next(1, 12), rand.Next(1, 28))),
                     Customer = demoCustomers[rand.Next(demoCustomers.Length - 1)]
                 };
+                
                 dbContext.Orders.Add(order);
+                dbContext.OrderHeaders.Add(order);
 
                 for (var j = 0; j < 3; j++)
                 {

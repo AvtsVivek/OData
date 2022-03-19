@@ -10,8 +10,8 @@ namespace SimpleAirVinyl.EntityDataModel
         {
             var builder = new ODataConventionModelBuilder();
 
-            builder.Namespace = "SimpleAirVinyl.Entities";
-            builder.ContainerName = "AirVinylContainer";
+            //builder.Namespace = "SimpleAirVinyl.Entities";
+            //builder.ContainerName = "AirVinylContainer";
 
             builder.EntitySet<Person>("People");
             builder.EntitySet<VinylRecord>("VinylRecords");

@@ -12,6 +12,6 @@ GET {{baseUrl}}people HTTP/1.1
 Accept: application/json
 
 ### Expand with Vianal Records
-GET {{baseUrl}}people?$expand=VinalRecords($select=VinylRecordId) HTTP/1.1
+GET {{baseUrl}}people?$expand=VinylRecords HTTP/1.1
 Accept: application/json
 

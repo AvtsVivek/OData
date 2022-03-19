@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,6 +12,7 @@ namespace ODataCoreFaq.Data
 		{
 			CustomerId = Guid.NewGuid();
 			Orders = new OrderCollection();
+			OrderHeaders = new List<OrderHeader>();
 		}
 
 		[Key]
@@ -25,6 +27,8 @@ namespace ODataCoreFaq.Data
 		public string CountryIsoCode { get; set; } = string.Empty;
 
 		public OrderCollection Orders { get; private set; }
+
+		public List<OrderHeader> OrderHeaders { get; private set; }
 	}
 
 	public class Product

@@ -47,6 +47,9 @@ namespace SimpleAirVinyl
 
             modelBuilder.Entity<Person>().Property(p => p.AmountOfCashToSpend).HasColumnType("decimal(8,2)");
 
+            modelBuilder.Entity<Person>(person => person.HasMany(typeof(VinylRecord), "VinylRecords")
+               .WithOne(nameof(Person)));
+
             modelBuilder.Entity<VinylRecord>();
 
             // comparer & converter for storing a list of strings

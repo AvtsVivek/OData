@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SimpleAirVinyl.Entities;
 
@@ -31,5 +29,5 @@ public class Person
 
     public decimal AmountOfCashToSpend { get; set; }
 
-    public ICollection<VinylRecord> VinylRecords { get; set; } = new List<VinylRecord>();
+    public List<VinylRecord> VinylRecords { get; set; } = new List<VinylRecord>();
 }

@@ -33,7 +33,7 @@ namespace SimpleAirVinyl
                             //, batchHandler
                             )
                         .Select()
-                        //.Expand()
+                        .Expand()
                         //.OrderBy()
                         //.SetMaxTop(10)
                         //.Count()

@@ -1,43 +1,37 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.AspNetCore.OData.Routing.Controllers;
-//using Microsoft.EntityFrameworkCore;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
+using Microsoft.AspNetCore.OData.Routing.Controllers;
 
-//namespace SimpleAirVinyl.Controllers
-//{
-//    [Route("odata")]
-//    public class VinylRecordsController : ODataController
-//    {
-//        private readonly AirVinylDbContext _airVinylDbContext;
-//        public VinylRecordsController(AirVinylDbContext airVinylDbContext)
-//        {
-//            _airVinylDbContext = airVinylDbContext
-//                ?? throw new ArgumentNullException(nameof(airVinylDbContext));
-//        }
+namespace SimpleAirVinyl.Controllers
+{
+    //[Route("odata")]
+    public class VinylRecordsController : ODataController
+    {
+        private readonly AirVinylDbContext _simpleAirVinylDbContext;
 
-//        [HttpGet("VinylRecords")]
-//        // Older version
-//        //[HttpGet]
-//        //[ODataRoute("VinylRecords")]
-//        public async Task<IActionResult> GetAllVinylRecords()
-//        {
-//            return Ok(await _airVinylDbContext.VinylRecords.ToListAsync());
-//        }
+        public VinylRecordsController(AirVinylDbContext simpleAirVinylDbContext)
+        {
+            _simpleAirVinylDbContext = simpleAirVinylDbContext
+                ?? throw new ArgumentNullException(nameof(simpleAirVinylDbContext));
+        }
 
-//        [HttpGet("VinylRecords({key})")]
-//        public async Task<IActionResult> GetOneVinylRecord(int key)
-//        {
-//            var vinylRecord = await _airVinylDbContext.VinylRecords
-//                .FirstOrDefaultAsync(p => p.VinylRecordId == key);
+        [EnableQuery]
+        public IActionResult Get()
+        {
+            return Ok(_simpleAirVinylDbContext.VinylRecords);
+        }
 
-//            if (vinylRecord == null)
-//            {
-//                return NotFound();
-//            }
-//            return Ok(vinylRecord);
-//        }
-//    }
-//}
+        //[HttpGet("VinylRecords({key})")]
+        //public async Task<IActionResult> GetOneVinylRecord(int key)
+        //{
+        //    var vinylRecord = await _airVinylDbContext.VinylRecords
+        //        .FirstOrDefaultAsync(p => p.VinylRecordId == key);
+
+        //    if (vinylRecord == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(vinylRecord);
+        //}
+    }
+}
