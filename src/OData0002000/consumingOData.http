@@ -93,6 +93,10 @@ Accept: application/json
 GET https://localhost:5001/odata/people(1)/Email
 Accept: application/json;odata.metadata=none
 
+### odata/people(1). Try to get Email for people, just the value
+GET https://localhost:5001/odata/people(1)/Email/$value
+Accept: application/json;odata.metadata=none
+
 ### odata/people(6). Try to get Email. 
 ### This person does not have email. 204 No Content will be the reposonse
 GET https://localhost:5001/odata/people(6)/Email

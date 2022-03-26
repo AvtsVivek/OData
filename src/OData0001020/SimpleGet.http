@@ -7,9 +7,20 @@ GET {{baseUrl}} HTTP/1.1
 ### Get metatdata. Not sure why this is not working. We need to add edm for this to work.
 GET {{baseUrl}}$metadata/ HTTP/1.1
 
-### Select Name and cost
+### Get people
 GET {{baseUrl}}people HTTP/1.1
 Accept: application/json
+
+### Get people
+GET {{baseUrl}}people HTTP/1.1
+Accept: application/json
+
+### Get people with Id = 1
+GET {{baseUrl}}people?$filter=PersonId eq 1 HTTP/1.1
+Accept: application/json
+
+###
+GET {{baseUrl}}people?$format=json&$filter=PersonId eq 1&$select=FirstName HTTP/1.1
 
 ### Expand with Vianal Records
 GET {{baseUrl}}people?$expand=VinylRecords HTTP/1.1

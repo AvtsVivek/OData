@@ -37,7 +37,7 @@ namespace SimpleAirVinyl
                         //.OrderBy()
                         //.SetMaxTop(10)
                         //.Count()
-                        //.Filter()
+                        .Filter()
                         )
                                 ;
 
