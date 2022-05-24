@@ -33,6 +33,53 @@ namespace OdataExpandDemo.Services
             return result;
         }
 
+        public IQueryable<Person> GetPeopleWithAccountsQuery()
+        {
+            var naveen = new Person
+            {
+                Name = "Naveen",
+                Id = 1,
+                BankAccounts = new List<BankAccount>
+                {
+                    new BankAccount
+                    {
+                        Id = 1111,
+                        BankName = "Bank 1"
+                    },
+                    new BankAccount
+                    {
+                        Id = 2222,
+                        BankName = "Bank 2"
+                    }
+                }
+            };
+
+            var bhuvana = new Person
+            {
+                Name = "Bhuvana",
+                Id = 2,
+                BankAccounts = new List<BankAccount>
+                {
+                    new BankAccount
+                    {
+                        Id = 1111,
+                        BankName = "Bank 1"
+                    },
+                    new BankAccount
+                    {
+                        Id = 3333,
+                        BankName = "Bank 3"
+                    }
+                }
+            };
+
+
+            var result = new List<Person>();
+            result.Add(naveen);
+            result.Add(bhuvana);
+            return result.AsQueryable();
+        }
+
         public IQueryable<Person> RetrieveAllPeople()
         {
             return new List<Person>

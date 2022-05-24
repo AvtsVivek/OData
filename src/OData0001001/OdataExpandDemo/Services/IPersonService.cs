@@ -10,6 +10,7 @@ namespace OdataExpandDemo.Services
     {
         IQueryable<Person> RetrieveAllPeople();
         List<Person> GetPeopleWithAccounts();
-        //List<Person> GetPersonWithAccounts();
+        IQueryable<Person> GetPeopleWithAccountsQuery();
+
     }
 }

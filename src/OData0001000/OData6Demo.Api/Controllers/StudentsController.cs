@@ -14,17 +14,19 @@ namespace OData6Demo.Api.Controllers
     [Route("api/[controller]")]
     public class StudentsController : ControllerBase
     {
-        private readonly IStudentService studentService;
+        private readonly IStudentService _studentService;
 
-        public StudentsController(IStudentService studentService) =>
-            this.studentService = studentService;
+        public StudentsController(IStudentService studentService)
+        {
+            _studentService = studentService;
+        }
 
         [HttpGet]
         [EnableQuery]
         public ActionResult<IQueryable<Student>> GetAllStudents()
         {
             IQueryable<Student> retrievedStudents =
-                this.studentService.RetrieveAllStudents();
+                _studentService.RetrieveAllStudents();
 
             return Ok(retrievedStudents);
         }

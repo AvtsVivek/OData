@@ -4,7 +4,7 @@
 ### So here, select, filter and order by capability are added.
 ### Also at the endpoint, we need to add the attribute [EnableQuery]
 
-@baseUrl = https://localhost:5001/gadget/odata/
+@baseUrl = https://localhost:5001/odata/gadgetsodata/
 
 ### GET service Def
 GET {{baseUrl}} HTTP/1.1
@@ -38,4 +38,8 @@ Accept: application/json
 
 ### Order by desc
 GET {{baseUrl}}?$orderby=ProductName desc
+Accept: application/json
+
+### Order by desc
+GET {{baseUrl}}$count
 Accept: application/json

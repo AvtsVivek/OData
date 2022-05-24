@@ -4,6 +4,15 @@
 ### So here, select, filter and order by capability are added.
 ### Also at the endpoint, we need to add the attribute [EnableQuery]
 
+## Do the following to give this a try.
+## Start vs code in this folder(folder containing this start.http file)
+## Start a terminal in vs code(Ctrl + Shift + `)
+## Change directory to the api folder(cd .\OData6Demo.Api\)
+## Execute the command dotnet run to start the api.
+## Ensure the api is running by browsing to https://localhost:5001/swagger/index.html
+## Ensure the Rest Client extension is installed in Vs Code
+## Now run the folliwng end points.
+
 ### Select Name
 GET https://localhost:5001/api/students?$select=name
 Accept: application/json

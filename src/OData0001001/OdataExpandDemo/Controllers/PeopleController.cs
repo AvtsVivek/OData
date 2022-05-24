@@ -23,20 +23,27 @@ namespace OdataExpandDemo.Controllers
         [EnableQuery]
         public ActionResult<IQueryable<Person>> GetAllPeople()
         {
-            var retrievedStudents =
-                studentService.RetrieveAllPeople();
+            var retrievedStudents = studentService.RetrieveAllPeople();
 
             return Ok(retrievedStudents);
         }
 
 		[HttpGet("person")]
 		[EnableQuery]
-		public IActionResult GetPerson()
+		public ActionResult GetPerson()
 		{
 			var retrievedStudents = studentService.GetPeopleWithAccounts();
 
 			return Ok(retrievedStudents);
 		}
 
-	}
+        [HttpGet("personquery")]
+        [EnableQuery]
+        public ActionResult<IQueryable<Person>> GetPersonQuery()
+        {
+            var retrievedStudents = studentService.GetPeopleWithAccountsQuery();
+
+            return Ok(retrievedStudents);
+        }
+    }
 }
