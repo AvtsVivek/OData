@@ -50,7 +50,7 @@ public class Startup
     services.AddDbContext(connectionString);
 
     services.AddControllersWithViews()
-      .AddNewtonsoftJson()
+      //.AddNewtonsoftJson()
       ;
     services.AddRazorPages();
 

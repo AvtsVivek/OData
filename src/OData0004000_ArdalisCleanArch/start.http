@@ -42,3 +42,7 @@ Accept: application/json
 ### Filter by name ending with 2
 GET {{baseUrlProjectsWithOData}}?$filter=Endswith(Name, '2')
 Accept: application/json
+
+### Orderby by name ending with 2
+GET {{baseUrlProjectsWithOData}}?$select=name, Id&$orderby=Id desc
+Accept: application/json

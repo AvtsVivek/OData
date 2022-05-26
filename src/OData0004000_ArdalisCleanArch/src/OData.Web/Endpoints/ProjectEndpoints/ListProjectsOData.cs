@@ -10,7 +10,7 @@ namespace OData.Web.Endpoints.ProjectEndpoints;
 
 public class ListProjectsOData : EndpointBaseAsync
     .WithoutRequest
-    .WithActionResult<ProjectListResponseOData>
+    .WithActionResult<IQueryable<Project>>
 {
   private readonly IReadRepository<Project> _repository;
 
@@ -27,20 +27,35 @@ public class ListProjectsOData : EndpointBaseAsync
       OperationId = "Project.ListOdata",
       Tags = new[] { "ProjectEndpoints" })
   ]
-  public override async Task<ActionResult<ProjectListResponseOData>> HandleAsync(CancellationToken cancellationToken)
+
+
+  //public override async Task<ActionResult<IQueryable<Project>>> HandleAsync(CancellationToken cancellationToken)
+  //{
+  //  var spec = new BlankProjectSpec();
+  //  IQueryable<Project> query = _repository.GetQueryBySpec(spec);
+  //  return Ok(query);
+  //}
+
+  public override Task<ActionResult<IQueryable<Project>>> HandleAsync(CancellationToken cancellationToken)
   {
-    var response = new ProjectListResponseOData();
-
     var spec = new BlankProjectSpec();
-
-    var query = _repository.GetQueryBySpec(spec);
-
-    return Ok(query);
-
-    //response.Projects = (await _repository.ListAsync()) // TODO: pass cancellation token
-    //    .Select(project => new ProjectRecord(project.Id, project.Name))
-    //    .ToList();
-
-    //return Ok(response);
+    IQueryable<Project> query = _repository.GetQueryBySpec(spec);
+    return Task.FromResult<ActionResult<IQueryable<Project>>>(Ok(query));
   }
+
+  //public override Task<ActionResult<IQueryable<Project>>> HandleAsync(CancellationToken cancellationToken)
+  //{
+
+  //  var spec = new BlankProjectSpec();
+
+  //  IQueryable<Project> query = _repository.GetQueryBySpec(spec);
+  //  return Task.FromResult<ActionResult<IQueryable<Project>>>(Ok(query));
+  //  //return Ok(query);
+
+  //  //response.Projects = (await _repository.ListAsync()) // TODO: pass cancellation token
+  //  //    .Select(project => new ProjectRecord(project.Id, project.Name))
+  //  //    .ToList();
+
+  //  //return Ok(response);
+  //}
 }
