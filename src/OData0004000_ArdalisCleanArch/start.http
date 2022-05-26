@@ -1,0 +1,44 @@
+
+### In Startup.cs, ensure the following configured.
+### services.AddOData(options => 
+###    options.Select().Filter().OrderBy().Expand());
+### So here, select, filter and order by capability are added.
+### Also at the endpoint, we need to add the attribute [EnableQuery]
+
+## Do the following to give this a try.
+## Start vs code in this folder(folder containing this start.http file)
+## Start a terminal in vs code(Ctrl + Shift + `)
+## Change directory to the api folder(cd .\OData6Demo.Api\)
+## Execute the command dotnet run to start the api.
+## Ensure the api is running by browsing to http://localhost:57679/swagger/index.html
+## Ensure the Rest Client extension is installed in Vs Code
+## Now run the folliwng end points.
+
+### Select Name
+
+@baseUrl = http://localhost:57679/
+@baseUrlProjectsWithOData = http://localhost:57679/projectswithodata/
+
+### GET service Def
+GET {{baseUrlProjectsWithOData}} HTTP/1.1
+
+
+### Select Name
+GET http://localhost:57679/projectswithodata?$select=name
+Accept: application/json
+
+### Select Name
+GET {{baseUrlProjectsWithOData}}?$select=name
+Accept: application/json
+
+### Select Name and id both
+GET {{baseUrlProjectsWithOData}}?$select=name, Id
+Accept: application/json
+
+### Filter by name
+GET {{baseUrlProjectsWithOData}}?$filter=name eq 'TestPro'
+Accept: application/json
+
+### Filter by name ending with 2
+GET {{baseUrlProjectsWithOData}}?$filter=Endswith(Name, '2')
+Accept: application/json
