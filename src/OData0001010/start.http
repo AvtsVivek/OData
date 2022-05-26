@@ -4,7 +4,18 @@
 ### So here, select, filter and order by capability are added.
 ### Also at the endpoint, we need to add the attribute [EnableQuery]
 
-@baseUrl = https://localhost:5001/gadget/odata/
+
+## Do the following to give this a try.
+## Start vs code in this folder(folder containing this start.http file)
+## Start a terminal in vs code(Ctrl + Shift + `)
+## Change directory to the api folder(cd .\OData0001010_Gadgets.Api\)
+## Execute the command dotnet run to start the api.
+## Ensure the api is running by browsing to https://localhost:5001/swagger/index.html
+## Ensure the Rest Client extension is installed in Vs Code
+## Now run the folliwng end points.
+
+
+@baseUrl = https://localhost:5001/gadget/get/
 
 ### GET service Def
 GET {{baseUrl}} HTTP/1.1
