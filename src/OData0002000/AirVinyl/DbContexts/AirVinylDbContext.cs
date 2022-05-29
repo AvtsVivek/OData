@@ -23,8 +23,7 @@ public class AirVinylDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<PressingDetail>()
-            ;
+        modelBuilder.Entity<PressingDetail>();
 
         modelBuilder.Entity<Person>().Property(p => p.AmountOfCashToSpend).HasColumnType("decimal(8,2)");
 

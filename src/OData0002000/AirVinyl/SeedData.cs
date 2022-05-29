@@ -7,6 +7,27 @@ namespace AirVinyl
 {
     public class SeedData
     {
+        public static void Initialize(IServiceProvider serviceProvider)
+        {
+            using (var dbContext = new AirVinylDbContext(
+                serviceProvider.GetRequiredService<DbContextOptions<AirVinylDbContext>>()))
+            {
+                if (dbContext.People.Any())
+                {
+                    return;// DB has been seeded
+                }
+
+                try
+                {
+                    PopulateTestData(dbContext);
+                }
+                catch (Exception)
+                {
+                    Debugger.Break();
+                    throw;
+                }
+            }
+        }
         public static List<PressingDetail> GetPressingDetailList()
         {
             return new List<PressingDetail>() {
@@ -378,29 +399,6 @@ namespace AirVinyl
                 },
             };
         }
-
-        public static void Initialize(IServiceProvider serviceProvider)
-        {
-            using (var dbContext = new AirVinylDbContext(
-                serviceProvider.GetRequiredService<DbContextOptions<AirVinylDbContext>>()))
-            {
-                if (dbContext.People.Any())
-                {
-                    return;// DB has been seeded
-                }
-
-                try
-                {
-                    PopulateTestData(dbContext);
-                }
-                catch (Exception)
-                {
-                    Debugger.Break();
-                    throw;
-                }
-            }
-        }
-
         public static void PopulateTestData(AirVinylDbContext dbContext)
         {
             GetAddressList().ForEach(address => dbContext.Add(address));

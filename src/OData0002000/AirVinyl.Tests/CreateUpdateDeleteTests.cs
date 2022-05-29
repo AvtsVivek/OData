@@ -30,7 +30,7 @@ namespace AirVinyl.Tests
 
         protected override void ConfigureInMemoryDatabase(IServiceCollection services, bool bConfigureDb = true)
         {
-            base.ConfigureInMemoryDatabase(services, false);
+            base.ConfigureInMemoryDatabase(services, true);
         }
 
         [Fact]
