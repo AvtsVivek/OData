@@ -3,6 +3,8 @@ using OData.Core.ProjectAggregate;
 using OData.SharedKernel;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace OData.Infrastructure.Data;
 
@@ -22,6 +24,29 @@ public class AppDbContext : DbContext
 
   public DbSet<ToDoItem> ToDoItems => Set<ToDoItem>();
   public DbSet<Project> Projects => Set<Project>();
+
+  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+  {
+    // Below line to watch the ef core sql quiries
+    // NOT FOR PRODUCTION 
+    // NOT FOR PRODUCTION 
+    // NOT FOR PRODUCTION 
+
+    // To see the output from the following 'Debug logger',
+    // open the Output window(View -> Output or Ctrl + Alt + O)
+    // and then select Debug from the see output from dropdown.
+    // Or elas you can configure console logger as below
+    Action<string> consoleLogger = logInfo => Console.WriteLine(logInfo);
+    Action<string> debugWindowLogger = logInfo => Debug.WriteLine(logInfo);
+
+    optionsBuilder
+    // 
+    //.LogTo(consoleLogger, LogLevel.Information)
+
+    .LogTo(debugWindowLogger, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
+    .EnableSensitiveDataLogging()
+    .EnableDetailedErrors();
+  }
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
